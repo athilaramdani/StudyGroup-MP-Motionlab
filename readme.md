@@ -14,3 +14,9 @@ Buka GitHub -> Klik tombol "+" di kanan atas -> Pilih "New repository" -> Isi na
 ### Membuat Repository Lokal dan Menghubungkannya ke GitHub
 Buka Terminal/GitBash (sesuaikan dengan folder), lalu lakukan command ini
 ```git init``` -> untuk mengcreate/ menginisialisasikan git di local
+```git add .``` -> untuk mengadd semua file yang ingin di commit
+```git commit -m "komentarnya"``` untuk mengcommit file yang sudah di add dengan komentar
+```git branch -M main``` -> untuk memasuki ke stagig area pada branch mai
+```git remote add origin <https/ssh>``` -> untuk remote pada origin terhadap https/ssh yang telah di masukkan
+```git push origin main``` -> untuk push yang telah di commit dari local ke github
+   
