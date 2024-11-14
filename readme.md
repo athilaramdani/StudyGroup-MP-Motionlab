@@ -55,7 +55,7 @@ Berikut adalah contoh gambar ilustrasi:
 | `git merge [branch-name]`          | Menggabungkan branch tertentu ke branch yang sedang aktif.                                                 |
 | `git rebase [branch-name]`         | Memindahkan basis branch aktif ke branch lain untuk riwayat commit yang lebih bersih.                      |
 | `git reset [file-name]`            | Membatalkan staging file tertentu.                                                                         |
-| `git reset --hard`                 | Membatalkan semua perubahan pada branch lokal, termasuk perubahan yang belum di-commit.                    |
+| `git reset --hard [commit-id]`                 | Membatalkan semua perubahan pada branch lokal, termasuk perubahan yang belum di-commit.                    |
 | `git revert [commit-id]`           | Membuat commit baru yang membatalkan perubahan dari commit tertentu.                                       |
 | `git clone [url]`                  | Menggandakan repository remote ke dalam folder lokal.                                                      |
 
