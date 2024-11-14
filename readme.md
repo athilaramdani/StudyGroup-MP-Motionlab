@@ -13,10 +13,11 @@ Pada pertemuan pertama Study Group dengan pemateri mas Zayid dan juga pada aslab
 Buka GitHub -> Klik tombol "+" di kanan atas -> Pilih "New repository" -> Isi nama repository dan pengaturan lainnya -> Klik "Create repository"
 ### Membuat Repository Lokal dan Menghubungkannya ke GitHub
 Buka Terminal/GitBash (sesuaikan dengan folder), lalu lakukan command ini
-```git init``` -> untuk mengcreate/ menginisialisasikan git di local
-```git add .``` -> untuk mengadd semua file yang ingin di commit
-```git commit -m "komentarnya"``` untuk mengcommit file yang sudah di add dengan komentar
-```git branch -M main``` -> untuk memasuki ke stagig area pada branch mai
-```git remote add origin <https/ssh>``` -> untuk remote pada origin terhadap https/ssh yang telah di masukkan
-```git push origin main``` -> untuk push yang telah di commit dari local ke github
-   
+| **Perintah**                      | **Fungsi**                                                                                                   |
+|------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| `git init`                         | Menginisialisasi repository Git lokal di folder yang dipilih.                                               |
+| `git add .`                        | Menambahkan semua file yang ada di folder ke staging area.                                                  |
+| `git commit -m "komentarnya"`      | Menyimpan perubahan yang ada di staging area ke repository lokal dengan pesan commit.                       |
+| `git branch -M main`               | Mengubah nama branch default menjadi `main`.                                                                |
+| `git remote add origin <url>`      | Menghubungkan repository lokal ke repository GitHub melalui URL (HTTPS/SSH).                                |
+| `git push origin main`             | Mengunggah commit dari branch `main` lokal ke repository `main` di GitHub.                                  |
