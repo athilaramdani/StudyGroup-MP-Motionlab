@@ -15,4 +15,5 @@ void main() {
   Person person2 = Person("Konogok", "10301223232421", "UI/UX");
   person1.introduce();
   print("ngetest aja");
+  print("ww");
 }
