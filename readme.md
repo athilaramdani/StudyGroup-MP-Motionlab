@@ -5,13 +5,14 @@
 ---
 ## Rangkuman Week 0: Version Control Git
 Pada pertemuan pertama Study Group dengan pemateri mas Zayid dan juga pada aslab serta rekan2 intern, kita membahas dasar-dasar Version Control menggunakan Git diantaranya :
+### inisialisasi awal
 1. **Membuat Akun Git**
 - Para intern yang masih belum membuat akun github diajarkan bagaimana cara membuat akun github dengan cara mendaftarkan email dan membuat password
 2. **Membuat Repository**
 - selanjutnya diberikan cara cara untuk pembuatan repo yaitu
-### Membuat Repository Melalui Website GitHub
+#### Membuat Repository Melalui Website GitHub
 Buka GitHub -> Klik tombol "+" di kanan atas -> Pilih "New repository" -> Isi nama repository dan pengaturan lainnya -> Klik "Create repository"
-### Membuat Repository Lokal dan Menghubungkannya ke GitHub
+#### Membuat Repository Lokal dan Menghubungkannya ke GitHub
 Buka Terminal/GitBash (sesuaikan dengan folder), lalu lakukan command ini
 | **Perintah**                      | **Fungsi**                                                                                                   |
 |------------------------------------|-------------------------------------------------------------------------------------------------------------|
@@ -22,7 +23,7 @@ Buka Terminal/GitBash (sesuaikan dengan folder), lalu lakukan command ini
 | `git remote add origin <url>`      | Menghubungkan repository lokal ke repository GitHub melalui URL (HTTPS/SSH).                                |
 | `git push origin main`             | Mengunggah commit dari branch `main` lokal ke repository `main` di GitHub.                                  |
 
-3. **Up Repo Memakai SSH**
+### Up Repo Memakai SSH
 
 Alur dalam up repo memakai SSH adalah sebagai berikut:  
 
@@ -38,7 +39,7 @@ Alur dalam up repo memakai SSH adalah sebagai berikut:
 Berikut adalah contoh gambar ilustrasi:  
 ![Contoh SSH Key](sshexample.png)
 
-4. **Daftar Syntax Git yang pastinya sering terpakai**
+### Daftar Syntax Git yang pastinya sering terpakai
 
 | **Perintah**                      | **Fungsi**                                                                                                   |
 |------------------------------------|-------------------------------------------------------------------------------------------------------------|
