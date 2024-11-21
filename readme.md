@@ -1,9 +1,9 @@
-# **Study Group MP - Week 1**  
+# **Study Group MP - Week 0**  
 **Athila Ramdani Saputra**  
 **NIM: 103012300132**  
 
 ---
-## Rangkuman Week 1: Version Control Git
+## Rangkuman Week 0: Version Control Git
 Pada pertemuan pertama Study Group dengan pemateri mas Zayid dan juga pada aslab serta rekan2 intern, kita membahas dasar-dasar Version Control menggunakan Git diantaranya :
 1. **Membuat Akun Git**
 - Para intern yang masih belum membuat akun github diajarkan bagaimana cara membuat akun github dengan cara mendaftarkan email dan membuat password
@@ -22,7 +22,7 @@ Buka Terminal/GitBash (sesuaikan dengan folder), lalu lakukan command ini
 | `git remote add origin <url>`      | Menghubungkan repository lokal ke repository GitHub melalui URL (HTTPS/SSH).                                |
 | `git push origin main`             | Mengunggah commit dari branch `main` lokal ke repository `main` di GitHub.                                  |
 
-### **Up Repo Memakai SSH**
+3. **Up Repo Memakai SSH**
 
 Alur dalam up repo memakai SSH adalah sebagai berikut:  
 
@@ -38,7 +38,7 @@ Alur dalam up repo memakai SSH adalah sebagai berikut:
 Berikut adalah contoh gambar ilustrasi:  
 ![Contoh SSH Key](sshexample.png)
 
-### **Daftar Syntax Git yang mungki terpakai**
+4. **Daftar Syntax Git yang pastinya sering terpakai**
 
 | **Perintah**                      | **Fungsi**                                                                                                   |
 |------------------------------------|-------------------------------------------------------------------------------------------------------------|
