@@ -2,60 +2,319 @@
 **Athila Ramdani Saputra**  
 **NIM: 103012300132**  
 
+# Flutter Week 1 with Kak Indra Mahesa
+
+## Pembukaan
+rangkuman **Week 1 Flutter** bersama Kak Indra Mahesa! Dalam sesi ini, kami mempelajari dasar-dasar **Flutter** sebagai alat untuk pengembangan aplikasi mobile. Sebelum mulai belajar Flutter, ada beberapa prasyarat yang perlu dipahami, termasuk pemrograman dengan bahasa Dart. Rangkuman ini mencakup teori, implementasi, dan contoh kode yang telah kami praktikkan.
+
 ---
-## Rangkuman Week 1: Version Control Git
-Pada pertemuan pertama Study Group dengan pemateri mas Zayid dan juga pada aslab serta rekan2 intern, kita membahas dasar-dasar Version Control menggunakan Git diantaranya :
-1. **Membuat Akun Git**
-- Para intern yang masih belum membuat akun github diajarkan bagaimana cara membuat akun github dengan cara mendaftarkan email dan membuat password
-2. **Membuat Repository**
-- selanjutnya diberikan cara cara untuk pembuatan repo yaitu
-### Membuat Repository Melalui Website GitHub
-Buka GitHub -> Klik tombol "+" di kanan atas -> Pilih "New repository" -> Isi nama repository dan pengaturan lainnya -> Klik "Create repository"
-### Membuat Repository Lokal dan Menghubungkannya ke GitHub
-Buka Terminal/GitBash (sesuaikan dengan folder), lalu lakukan command ini
-| **Perintah**                      | **Fungsi**                                                                                                   |
-|------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| `git init`                         | Menginisialisasi repository Git lokal di folder yang dipilih.                                               |
-| `git add .`                        | Menambahkan semua file yang ada di folder ke staging area.                                                  |
-| `git commit -m "komentarnya"`      | Menyimpan perubahan yang ada di staging area ke repository lokal dengan pesan commit.                       |
-| `git branch -M main`               | Mengubah nama branch default menjadi `main`.                                                                |
-| `git remote add origin <url>`      | Menghubungkan repository lokal ke repository GitHub melalui URL (HTTPS/SSH).                                |
-| `git push origin main`             | Mengunggah commit dari branch `main` lokal ke repository `main` di GitHub.                                  |
 
-### **Up Repo Memakai SSH**
+## Penjelasan
 
-Alur dalam up repo memakai SSH adalah sebagai berikut:  
+### **Apa itu Flutter?**
+Flutter adalah sebuah toolkit yang dikembangkan oleh Google untuk membuat aplikasi mobile yang indah dan berkinerja tinggi. Flutter memanfaatkan bahasa pemrograman Dart sebagai dasarnya.
 
-| **Langkah**                          | **Perintah/Proses**                                                                                                     |
-|--------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| Membuat SSH Key                      | Jalankan perintah: `ssh-keygen -t ed25519 -C "emailsaya@gmail.com"`, lalu kita disuruh mengenter File untuk menyimpan key nya, enter saja lalu enter lagi 2 kali untuk skip passphrase sampai akan muncul lokasi penyimpanan identification, public key, tampilan key fingerprint dan keys random art                                                     |
-| Menyalin SSH Key                     | Gunakan perintah: `clip < ~/.ssh/id_ed25519.pub`.                                                                      |
-| Menambahkan Key ke GitHub            | Masukkan key yang telah disalin ke **Profile > Settings > SSH and GPG Keys > New SSH Key**.                             |
-| Mengisi Title dan Key                | Beri judul pada key dan paste key yang disalin dari langkah sebelumnya.                                                 |
-| Gunakan Alur di poin membuat repository lokal | ikuti alur nya dan setelah di push muncul gambar seperti di bawah tabel. |
-| Fungsi SSH                           | Berguna untuk menghubungkan GitHub dengan komputer lokal secara aman.  |
+#### **Prasyarat Belajar Flutter:**
+1. Familiar dengan aplikasi Android/iOS.
+2. Memahami algoritma pemrograman.
+3. Menguasai bahasa pemrograman Dart.
 
-Berikut adalah contoh gambar ilustrasi:  
-![Contoh SSH Key](sshexample.png)
+---
 
-### **Daftar Syntax Git yang mungki terpakai**
+### **Bahasa Pemrograman Dart**
+Dart adalah bahasa yang:
+- **Dikembangkan oleh Google** dengan fokus pada pengembangan frontend.
+- **Mendukung paradigma Object-Oriented** Programming (OOP).
+- **Menganut strongly-typed system**, yang berarti setiap variabel memiliki tipe data yang jelas.
 
-| **Perintah**                      | **Fungsi**                                                                                                   |
-|------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| `git checkout [branch-name]`       | Berpindah ke branch lain yang sudah ada.                                                                   |
-| `git branch`                       | Menampilkan daftar branch yang tersedia pada repository lokal.                                             |
-| `git branch [branch-name]`         | Membuat branch baru dengan nama yang ditentukan.                                                           |
-| `git status`                       | Menampilkan status repository lokal, termasuk file yang belum di-tracked, di-staged, atau siap di-commit.  |
-| `git log`                          | Menampilkan riwayat commit pada branch saat ini.                                                           |
-| `git stash`                        | Menyimpan perubahan yang belum di-commit ke dalam penyimpanan sementara (stash) tanpa mengubah file kerja. |
-| `git stash apply`                  | Mengambil kembali perubahan yang disimpan di stash ke dalam workspace.                                     |
-| `git push origin [branch-name]`    | Mengunggah commit dari branch tertentu ke repository di GitHub.                                            |
-| `git pull`                         | Mengambil perubahan terbaru dari repository remote dan menggabungkannya dengan branch lokal.               |
-| `git fetch`                        | Mengambil data terbaru dari repository remote tanpa menggabungkan ke branch lokal.                         |
-| `git merge [branch-name]`          | Menggabungkan branch tertentu ke branch yang sedang aktif.                                                 |
-| `git rebase [branch-name]`         | Memindahkan basis branch aktif ke branch lain untuk riwayat commit yang lebih bersih.                      |
-| `git reset [file-name]`            | Membatalkan staging file tertentu.                                                                         |
-| `git reset --hard [commit-id]`                 | Membatalkan semua perubahan pada branch lokal, termasuk perubahan yang belum di-commit.                    |
-| `git revert [commit-id]`           | Membuat commit baru yang membatalkan perubahan dari commit tertentu.                                       |
-| `git clone [url]`                  | Menggandakan repository remote ke dalam folder lokal.                                                      |
+---
 
+### **Dasar-Dasar Dart yang Dipelajari**
+1. **Print Hello World**
+```dart
+void main() {
+  print("Hello, World!");
+}
+```
+2. **Pengenalan Variabel**
+   - Variabel menggunakan `var`, `String`, `int`, `double`, dll.
+```dart
+void main() {
+  String nama = "Athila";
+  int umur = 20;
+  double tinggi = 175.5;
+
+  print("Nama: $nama");
+  print("Umur: $umur");
+  print("Tinggi: $tinggi cm");
+}
+
+```
+3. **Final dan Const**
+   - Nilai yang tidak dapat diubah setelah deklarasi dengan perbedaan :
+   - `final` : Nilai ditentukan saat runtime.
+   - `const` : Nilai harus diketahui saat compile time.
+```dart
+void main() {
+  final waktuSekarang = DateTime.now();
+  const pi = 3.14;
+
+  print("Waktu sekarang: $waktuSekarang");
+  print("Nilai pi: $pi");
+}
+```
+4. **Dynamic dan Null Type**
+   - Dynamic: Variabel tanpa tipe data tetap, tipe akan ditentukan saat runtime.
+- Null : Dart memastikan variabel tidak boleh bernilai null kecuali dideklarasikan eksplisit.
+```dart
+void main() {
+  dynamic variabelBebas = "Hello";
+  print(variabelBebas);
+
+  variabelBebas = 123; // Tipe data berubah
+  print(variabelBebas);
+
+  String? bolehNull = null; // Variabel null-safe
+  print(bolehNull);
+}
+
+```
+5. **Operasi Aritmatika dan Perbandingan**
+    - art mendukung operasi aritmatika seperti penjumlahan, pengurangan, dan sebagainya, serta operator perbandingan.
+```dart
+void main() {
+  int a = 10, b = 5;
+
+  print("Penjumlahan: ${a + b}");
+  print("Pengurangan: ${a - b}");
+  print("Perbandingan: ${a > b}");
+}
+
+```
+6. **Percabangan**
+   - Contoh: `if`, `else if`,`else`
+```dart
+void main() {
+  int nilai = 75;
+
+  if (nilai >= 80) {
+    print("Nilai: A");
+  } else if (nilai >= 60) {
+    print("Nilai: B");
+  } else {
+    print("Nilai: C");
+  }
+}
+
+```
+7. **Perulangan**
+    - Dart mendukung perulangan seperti `for`, `while`, dan `do-while`.
+```dart
+void main() {
+  List<String> mahasiswa = ["Athila", "Pei", "Tomang"];
+
+  for (int i = 0; i < mahasiswa.length; i++) {
+    print("Mahasiswa: ${mahasiswa[i]}");
+  }
+
+  for (var mhs in mahasiswa) {
+    print("Mahasiswa (for in): $mhs");
+  }
+}
+
+```
+
+
+8. **Function**
+   - Fungsi adalah blok kode yang dapat digunakan ulang. Dart juga mendukung **Arrow Function** dan **Anonymous Function**. 
+```dart
+void fungsiBiasa() {
+  print("Ini fungsi biasa.");
+}
+
+void main() {
+  // Arrow Function
+  int penjumlahan(int a, int b) => a + b;
+
+  // Anonymous Function
+  var fungsiTanpaNama = () {
+    print("Fungsi tanpa nama.");
+  };
+
+  fungsiBiasa();
+  print("Hasil Penjumlahan: ${penjumlahan(5, 3)}");
+  fungsiTanpaNama();
+}
+
+```
+
+
+9. **Struktur Data**
+   - **List:** Menyimpan banyak nilai dalam satu variabel.
+   - **Map:** Menyimpan data dalam pasangan kunci dan nilai, mirip seperti `struct`.
+```dart
+void main() {
+  // List
+  List<String> mahasiswa = ["Athila", "Pei", "Tomang"];
+  print("Mahasiswa: $mahasiswa");
+
+  // Map
+  Map<String, int> nilaiMahasiswa = {
+    "Athila": 90,
+    "Pei": 85,
+    "Tomang": 78,
+  };
+  print("Nilai Mahasiswa: $nilaiMahasiswa");
+}
+
+```
+10. **Class**
+   - Blueprint untuk membuat objek. Variabel privat hanya dapat diakses dalam file yang sama.
+```dart
+class Mahasiswa {
+  String nama;
+  int umur;
+
+  Mahasiswa(this.nama, this.umur);
+
+  void perkenalan() {
+    print("Halo, nama saya $nama, umur saya $umur tahun.");
+  }
+}
+
+void main() {
+  Mahasiswa mhs = Mahasiswa("Athila", 20);
+  mhs.perkenalan();
+}
+
+```
+### **Object-Oriented Programming (OOP) dalam Dart**
+
+Dart mendukung paradigma **Object-Oriented Programming (OOP)** yang memungkinkan pengembang untuk membuat program yang lebih modular dan terorganisasi. OOP terdiri dari empat prinsip utama: **Encapsulation, Inheritance, Polymorphism,** dan **Abstraction**.
+
+#### **Encapsulation**
+Encapsulation adalah konsep membungkus data (variabel) dan metode dalam sebuah class, serta membatasi akses ke data dengan menggunakan modifier seperti `private`.
+
+```dart
+class Mahasiswa {
+  String _nama; // Variabel private
+  int _umur;
+
+  Mahasiswa(this._nama, this._umur);
+
+  // Getter untuk mengakses variabel private
+  String get nama => _nama;
+
+  // Setter untuk mengubah variabel private
+  set nama(String namaBaru) {
+    _nama = namaBaru;
+  }
+
+  void perkenalan() {
+    print("Halo, nama saya $_nama, umur saya $_umur tahun.");
+  }
+}
+
+void main() {
+  Mahasiswa mhs = Mahasiswa("Athila", 20);
+  mhs.perkenalan();
+
+  // Mengakses data private menggunakan setter dan getter
+  mhs.nama = "Ramdani";
+  print("Nama baru: ${mhs.nama}");
+}
+```
+
+#### **Inheritance**
+Inheritance adalah kemampuan sebuah class untuk mewarisi properti dan metode dari class lain (parent class).
+
+```dart
+// Parent class
+class Kendaraan {
+  void bergerak() {
+    print("Kendaraan bergerak.");
+  }
+}
+
+// Child class
+class Mobil extends Kendaraan {
+  void klakson() {
+    print("Mobil membunyikan klakson!");
+  }
+}
+
+void main() {
+  Mobil avanza = Mobil();
+  avanza.bergerak(); // Dari parent class
+  avanza.klakson();  // Dari child class
+}
+
+```
+#### **Polymorphism**
+Polymorphism memungkinkan suatu metode atau fungsi memiliki implementasi yang berbeda berdasarkan class yang menggunakannya.
+
+```dart
+class Hewan {
+  void suara() {
+    print("Hewan bersuara.");
+  }
+}
+
+class Kucing extends Hewan {
+  @override
+  void suara() {
+    print("Kucing mengeong.");
+  }
+}
+
+class Anjing extends Hewan {
+  @override
+  void suara() {
+    print("Anjing menggonggong.");
+  }
+}
+
+void main() {
+  Hewan hewan1 = Kucing();
+  Hewan hewan2 = Anjing();
+
+  hewan1.suara();
+  hewan2.suara();
+}
+
+```
+#### **Abstraction**
+Abstraction adalah kemampuan untuk mendefinisikan kerangka dasar tanpa memberikan implementasi secara langsung. Hal ini dilakukan menggunakan abstract class.
+```dart
+class Hewan {
+  void suara() {
+    print("Hewan bersuara.");
+  }
+}
+
+class Kucing extends Hewan {
+  @override
+  void suara() {
+    print("Kucing mengeong.");
+  }
+}
+
+class Anjing extends Hewan {
+  @override
+  void suara() {
+    print("Anjing menggonggong.");
+  }
+}
+
+void main() {
+  Hewan hewan1 = Kucing();
+  Hewan hewan2 = Anjing();
+
+  hewan1.suara();
+  hewan2.suara();
+}
+
+```
+
+
+---
