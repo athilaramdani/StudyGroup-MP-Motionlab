@@ -4,7 +4,7 @@
 
 ---
 ## Rangkuman Week 0: Version Control Git
-Pada pertemuan pertama Study Group dengan pemateri mas Zayid dan juga pada aslab serta rekan2 intern, kita membahas dasar-dasar Version Control menggunakan Git diantaranya :
+Pada pertemuan pertama Study Group dengan pemateri mas Zayid dan juga para aslab serta rekan2 intern, distudy group week 0 ini membahas dasar-dasar Version Control menggunakan Git diantaranya :
 ### inisialisasi awal
 1. **Membuat Akun Git**
 - Para intern yang masih belum membuat akun github diajarkan bagaimana cara membuat akun github dengan cara mendaftarkan email dan membuat password
