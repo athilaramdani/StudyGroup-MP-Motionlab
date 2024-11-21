@@ -33,7 +33,7 @@ Alur dalam up repo memakai SSH adalah sebagai berikut:
 | Menyalin SSH Key                     | Gunakan perintah: `clip < ~/.ssh/id_ed25519.pub`.                                                                      |
 | Menambahkan Key ke GitHub            | Masukkan key yang telah disalin ke **Profile > Settings > SSH and GPG Keys > New SSH Key**.                             |
 | Mengisi Title dan Key                | Beri judul pada key dan paste key yang disalin dari langkah sebelumnya.                                                 |
-| Gunakan Alur di poin membuat repository lokal | ikuti alur nya dan setelah di push muncul gambar seperti di bawah tabel. |
+| ikuti langkah | ikuti langkah nya dan setelah di push muncul gambar seperti di bawah tabel. |
 | Fungsi SSH                           | Berguna untuk menghubungkan GitHub dengan komputer lokal secara aman.  |
 
 Berikut adalah contoh gambar ilustrasi:  
