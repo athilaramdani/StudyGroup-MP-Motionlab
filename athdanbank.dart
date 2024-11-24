@@ -1,37 +1,6 @@
 import 'dart:io';
-
-class BankAccount {
-  String accountName;
-  int balance;
-
-  // Default saldo: Rp50.000
-  BankAccount(this.accountName, [this.balance = 50000]);
-
-  void checkBalance() {
-    print('Saldo Anda saat ini adalah: Rp$balance');
-  }
-
-  void deposit(int amount) {
-    if (amount <= 0) {
-      print('Jumlah deposit harus lebih dari 0.');
-    } else {
-      balance += amount;
-      print('Berhasil menambahkan saldo sebesar Rp$amount.');
-    }
-  }
-
-  void withdraw(int amount) {
-    if (amount <= 0) {
-      print('Jumlah penarikan harus lebih dari 0.');
-    } else if (amount > balance) {
-      print('Saldo Anda tidak mencukupi untuk penarikan ini.');
-    } else {
-      balance -= amount;
-      print('Berhasil menarik saldo sebesar Rp$amount.');
-    }
-  }
-}
-
+import 'account.dart';
+import 'ui.dart';
 
 void main() {
   printHeader();
@@ -83,17 +52,3 @@ void main() {
   }
 }
 
-void printHeader() {
-  print('\x1B[34m=========================================\x1B[0m');
-  print('\x1B[34m   Selamat Datang di Aplikasi Athdanz Bank   \x1B[0m');
-  print('\x1B[34m=========================================\x1B[0m');
-}
-
-void printMenu(String namaakun) {
-  print('\n--- Menu Utama ---');
-  print('Selamat Datang, \x1B[94m$namaakun\x1B[0m');
-  print('1. Cek Saldo');
-  print('2. Deposit Saldo');
-  print('3. Tarik Saldo');
-  print('4. Keluar');
-}
