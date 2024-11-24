@@ -48,7 +48,7 @@ void main() {
   var account = BankAccount(name);
 
   while (true) {
-    printMenu();
+    printMenu(account.accountName);
     stdout.write('Pilih menu (1-4): ');
     String? choice = stdin.readLineSync();
 
@@ -84,13 +84,14 @@ void main() {
 }
 
 void printHeader() {
-  print('=========================================');
-  print('   Selamat Datang di Aplikasi Athdanz Bank   ');
-  print('=========================================');
+  print('\x1B[34m=========================================\x1B[0m');
+  print('\x1B[34m   Selamat Datang di Aplikasi Athdanz Bank   \x1B[0m');
+  print('\x1B[34m=========================================\x1B[0m');
 }
 
-void printMenu() {
+void printMenu(String namaakun) {
   print('\n--- Menu Utama ---');
+  print('Selamat Datang, \x1B[94m$namaakun\x1B[0m');
   print('1. Cek Saldo');
   print('2. Deposit Saldo');
   print('3. Tarik Saldo');
