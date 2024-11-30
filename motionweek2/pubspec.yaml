@@ -88,7 +88,14 @@ flutter:
   # see https://flutter.dev/to/font-from-package
   assets:
     - assets/images/
+    - assets/images/internal/
   fonts:
     - family: Inter
       fonts:
         - asset: assets/fonts/Inter-VariableFont_opsz,wght.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto/Roboto-Regular.ttf
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/Raleway/Raleway-VariableFont_wght.ttf
