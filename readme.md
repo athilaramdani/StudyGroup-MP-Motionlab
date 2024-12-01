@@ -139,4 +139,4 @@ GridView.builder(
 ```
 
 ### Kesimpulan
-Widget adalah kunci utama dalam membangun antarmuka pengguna di Flutter. Dengan memahami dan mengkombinasikan widget dengan baik, Anda dapat membuat aplikasi yang kompleks dan menarik.
+Widget adalah kunci utama dalam membangun antarmuka pengguna di Flutter. Semua yang ada di Flutter adalah widget.
