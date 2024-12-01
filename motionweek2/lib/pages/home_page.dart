@@ -70,10 +70,14 @@ class _HomePageState extends State<HomePage> {
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: FilterChip(
+                            showCheckmark: false,
                             label: Text(
                               _chipLabels[index],
                               style: TextStyle(
                                 fontFamily: isSelected ? 'Raleway' : 'Inter',
+                                fontWeight: isSelected
+                                    ? FontWeight.bold
+                                    : FontWeight.normal,
                                 color: isSelected ? Colors.white : Colors.black,
                               ),
                             ),
