@@ -11,18 +11,59 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0; // Untuk menyimpan indeks FilterChip yang terpilih
+  int _selectedIndex = 0;
   final List<String> _chipLabels = [
     'All',
     'Watch',
     'Shirt',
     'Shoes',
-    'test',
-    'test2'
+    'Jacket',
+    'Dress'
+  ];
+
+  final List<Map<String, dynamic>> _products = [
+    {
+      'title': 'Mi Band 8 Pro',
+      'price': '\$54.00',
+      'image': 'assets/images/IMBand.png',
+      'category': 'Watch',
+      'description':
+          'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum High-quality smart band for daily fitness tracking.',
+      'isFavorite': true,
+    },
+    {
+      'title': 'Lycra Men\'s shirt',
+      'price': '\$12.00',
+      'image': 'assets/images/tshirt.png',
+      'category': 'Shirt',
+      'isFavorite': false,
+    },
+    {
+      'title': 'Headphone',
+      'price': '\$45.00',
+      'image': 'assets/images/headphones.png',
+      'category': 'Others', // Not in chip filters
+      'isFavorite': false,
+    },
+    {
+      'title': 'Sneakers',
+      'price': '\$35.00',
+      'image': 'assets/images/shoes.png',
+      'category': 'Shoes',
+      'isFavorite': false,
+    },
   ];
 
   @override
   Widget build(BuildContext context) {
+    final String selectedCategory = _chipLabels[_selectedIndex];
+    final List<Map<String, dynamic>> filteredProducts =
+        selectedCategory == 'All'
+            ? _products
+            : _products
+                .where((product) => product['category'] == selectedCategory)
+                .toList();
+
     return Scaffold(
       backgroundColor: const Color(0xFFFCFFFE),
       body: Column(
@@ -96,6 +137,9 @@ class _HomePageState extends State<HomePage> {
                                   ? const Color(0XFF00623B)
                                   : const Color(0XFFF2F2F2),
                             ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
                           ),
                         );
                       }),
@@ -116,34 +160,15 @@ class _HomePageState extends State<HomePage> {
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
                       childAspectRatio: 0.7,
-                      children: [
-                        ProductCard(
-                          title: 'Mi Band 8 Pro',
-                          price: '\$54.00',
-                          image: 'assets/images/IMBand.png',
-                          description:
-                              'Built for life and made to last, this full-zip corduroy jacket is part of our Nike Life collection. The spacious fit gives you plenty of room to layer underneath, while the soft corduroy keeps it casual and timeless.',
-                          isFavorite: true,
-                        ),
-                        ProductCard(
-                          title: 'Lycra Men\'s shirt',
-                          price: '\$12.00',
-                          image: 'assets/images/tshirt.png',
-                          isFavorite: false,
-                        ),
-                        ProductCard(
-                          title: 'Headphone',
-                          price: '\$45.00',
-                          image: 'assets/images/headphones.png',
-                          isFavorite: false,
-                        ),
-                        ProductCard(
-                          title: 'Sneakers',
-                          price: '\$35.00',
-                          image: 'assets/images/shoes.png',
-                          isFavorite: false,
-                        ),
-                      ],
+                      children: filteredProducts.map((product) {
+                        return ProductCard(
+                          title: product['title'],
+                          price: product['price'],
+                          image: product['image'],
+                          description: product['description'],
+                          isFavorite: product['isFavorite'],
+                        );
+                      }).toList(),
                     ),
                   ),
                 ],

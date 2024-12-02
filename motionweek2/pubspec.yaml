@@ -98,4 +98,4 @@ flutter:
         - asset: assets/fonts/Roboto/Roboto-Regular.ttf
     - family: Raleway
       fonts:
-        - asset: assets/fonts/Raleway/Raleway-VariableFont_wght.ttf
+        - asset: assets/fonts/Raleway/static/Raleway-Medium.ttf
