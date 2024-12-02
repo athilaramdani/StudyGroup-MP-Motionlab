@@ -56,7 +56,7 @@ Container(
 )
 ```
 
-![Contoh Container](/readmeassets/images/container.png)
+![Contoh Container](/readmeassets/images/container.png){: width="300px"}
 
 #### 3. Text
 
@@ -73,7 +73,7 @@ Text(
 )
 ```
 
-![Contoh text](/readmeassets/images/text.png)
+![Contoh text](/readmeassets/images/text.png){: width="300px"}
 
 #### 4. Image
 
@@ -92,7 +92,7 @@ Image.network(
 )
 ```
 
-![Contoh Image](/readmeassets/images/image.png)
+![Contoh Image](/readmeassets/images/image.png){: width="300px"}
 
 #### 5. Icon
 
@@ -106,7 +106,7 @@ Icon(
 )
 ```
 
-![Contoh icon](/readmeassets/images/icon.png)
+![Contoh icon](/readmeassets/images/icon.png){: width="300px"}
 
 ### Layout Widgets
 
@@ -126,7 +126,7 @@ Row(
 )
 ```
 
-![Contoh column](/readmeassets/images/column.png)
+![Contoh column](/readmeassets/images/column.png){: width="300px"}
 
 ```dart
 // Contoh Column dengan Container berwarna
@@ -140,7 +140,7 @@ Column(
 )
 ```
 
-![Contoh row](/readmeassets/images/row.png)
+![Contoh row](/readmeassets/images/row.png){: width="300px"}
 
 #### GridView
 
@@ -162,7 +162,7 @@ GridView.builder(
 )
 ```
 
-![Contoh Grid](/readmeassets/images/gridview.png)
+![Contoh Grid](/readmeassets/images/gridview.png){: width="300px"}
 
 ### Kesimpulan
 
