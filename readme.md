@@ -7,6 +7,11 @@
 
 ## Rangkuman Week 2: Flutter Widget Fundamentals
 
+**!!HIGHLIGHT!!** ini adalah cuplikan hasil dari slicing UI berdasarkan figmanyaa
+
+<img src="/readmeassets/images/home_page.png" alt="Gambar container" width="300"/>
+<img src="/readmeassets/images/detail_product.png" alt="Gambar container" width="300"/>
+
 ### Pengenalan Widget
 
 rangkuman **Week 2 Flutter** bersama Kak Indra Mahesa! Dalam sesi ini, kami mempelajari widget pada **Flutter**
