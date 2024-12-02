@@ -10,7 +10,7 @@
 ### Pengenalan Widget
 
 rangkuman **Week 2 Flutter** bersama Kak Indra Mahesa! Dalam sesi ini, kami mempelajari widget pada **Flutter**
-Widget adalah blok bangunan dasar dalam pengembangan aplikasi Flutter. Mereka mendeskripsikan bagaimana tampilan aplikasi seharusnya terlihat berdasarkan konfigurasi dan state saat ini. Setiap widget membuat deskripsi dari bagian antarmuka pengguna.
+Widget adalah blok bangunan dasar dalam pengembangan aplikasi Flutter, yang mendeskripsikan bagaimana tampilan aplikasi seharusnya terlihat berdasarkan konfigurasi dan state saat ini. Setiap widget membuat deskripsi dari bagian antarmuka pengguna.
 
 ### Widget Esensial dalam Flutter
 
@@ -164,6 +164,47 @@ GridView.builder(
 
 <img src="/readmeassets/images/gridview.png" alt="Gambar grid" width="300"/>
 
-### Kesimpulan
+### Routing dan Navigasi
 
-Widget adalah kunci utama dalam membangun antarmuka pengguna di Flutter. Semua yang ada di Flutter adalah widget.
+Routing dalam Flutter memungkinkan navigasi antar halaman. Dalam aplikasi ini, routing diatur dalam `MaterialApp` dengan mendefinisikan `home` dan `routes`.
+
+#### Navigator
+
+`Navigator` adalah widget yang mengelola tumpukan halaman (stack of pages) dalam aplikasi. Dengan menggunakan `Navigator.pushNamed`, kita dapat berpindah ke halaman lain dengan mudah. Contoh penggunaan `Navigator` terdapat dalam komponen `ProductCard`, dimana aplikasi akan mengarahkan pengguna ke halaman detail produk.
+
+```dart
+Navigator.pushNamed( context, '/detail', arguments: { 'title': title, 'price': price, 'image': image, 'isFavorite': isFavorite, 'description': description ?? "tidak ada deskripsi", }, );
+```
+
+### Pengiriman Argumen
+
+mengirimkan argumen berupa informasi dari halaman pengirim ke halaman yang dikirim, dengan menggunakan `ModalRoute.of(context)?.settings.arguments` dan disimpan menjadi `Map<String, dynamic>`.
+
+Halaman/componen pengirim
+
+```dart
+return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          '/detail',
+          arguments: {
+            'title': title,
+            'price': price,
+            'image': image,
+            'isFavorite': isFavorite,
+            'description': description ?? "tidak ada deskripsi",
+          },
+        );
+      },
+)
+...
+```
+
+Halaman/Componen Penerima
+
+```dart
+ final Map<String, dynamic> product =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
+
+```
