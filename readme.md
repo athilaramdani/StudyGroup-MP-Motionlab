@@ -56,7 +56,7 @@ Container(
 )
 ```
 
-![Contoh Container](/readmeassets/images/container.png){: width="300px"}
+<img src="/readmeassets/images/container.png" alt="Gambar container" width="300"/>
 
 #### 3. Text
 
@@ -73,7 +73,7 @@ Text(
 )
 ```
 
-![Contoh text](/readmeassets/images/text.png){: width="300px"}
+<img src="/readmeassets/images/text.png" alt="Gambar text" width="300"/>
 
 #### 4. Image
 
@@ -92,7 +92,7 @@ Image.network(
 )
 ```
 
-![Contoh Image](/readmeassets/images/image.png){: width="300px"}
+<img src="/readmeassets/images/image.png" alt="Gambar image" width="300"/>
 
 #### 5. Icon
 
@@ -106,7 +106,7 @@ Icon(
 )
 ```
 
-![Contoh icon](/readmeassets/images/icon.png){: width="300px"}
+<img src="/readmeassets/images/icon.png" alt="Gambar icon" width="300"/>
 
 ### Layout Widgets
 
@@ -126,7 +126,7 @@ Row(
 )
 ```
 
-![Contoh column](/readmeassets/images/column.png){: width="300px"}
+<img src="/readmeassets/images/row.png" alt="Gambar row" width="300"/>
 
 ```dart
 // Contoh Column dengan Container berwarna
@@ -140,7 +140,7 @@ Column(
 )
 ```
 
-![Contoh row](/readmeassets/images/row.png){: width="300px"}
+<img src="/readmeassets/images/column.png" alt="Gambar column" width="300"/>
 
 #### GridView
 
