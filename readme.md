@@ -1,17 +1,21 @@
-# **Study Group MP - Week 2**  
+# **Study Group MP - Week 2**
+
 **Athila Ramdani Saputra**  
-**NIM: 103012300132**  
+**NIM: 103012300132**
 
 ---
+
 ## Rangkuman Week 2: Flutter Widget Fundamentals
 
 ### Pengenalan Widget
+
 rangkuman **Week 2 Flutter** bersama Kak Indra Mahesa! Dalam sesi ini, kami mempelajari widget pada **Flutter**
 Widget adalah blok bangunan dasar dalam pengembangan aplikasi Flutter. Mereka mendeskripsikan bagaimana tampilan aplikasi seharusnya terlihat berdasarkan konfigurasi dan state saat ini. Setiap widget membuat deskripsi dari bagian antarmuka pengguna.
 
 ### Widget Esensial dalam Flutter
 
 #### 1. Scaffold
+
 Widget yang menyediakan struktur dasar untuk aplikasi, termasuk AppBar, body, dan properti lain yang umum digunakan.
 
 ```dart
@@ -30,6 +34,7 @@ Scaffold(
 ```
 
 #### 2. Container
+
 Widget serbaguna untuk mengatur layout, padding, margin, dan dekorasi elemen UI.
 
 ```dart
@@ -51,7 +56,10 @@ Container(
 )
 ```
 
+![Contoh Container](/readmeassets/images/container.png)
+
 #### 3. Text
+
 Menampilkan dan menata teks dalam berbagai gaya.
 
 ```dart
@@ -65,7 +73,10 @@ Text(
 )
 ```
 
+![Contoh text](/readmeassets/images/text.png)
+
 #### 4. Image
+
 Menampilkan gambar dari berbagai sumber.
 
 ```dart
@@ -81,7 +92,10 @@ Image.network(
 )
 ```
 
+![Contoh Image](/readmeassets/images/image.png)
+
 #### 5. Icon
+
 Menampilkan ikon bawaan atau kustom.
 
 ```dart
@@ -92,9 +106,12 @@ Icon(
 )
 ```
 
+![Contoh icon](/readmeassets/images/icon.png)
+
 ### Layout Widgets
 
 #### Row dan Column
+
 Mengatur widget secara horizontal (Row) atau vertikal (Column).
 
 ```dart
@@ -107,7 +124,11 @@ Row(
     Container(color: Colors.blue, width: 50, height: 50),
   ],
 )
+```
 
+![Contoh column](/readmeassets/images/column.png)
+
+```dart
 // Contoh Column dengan Container berwarna
 Column(
   mainAxisAlignment: MainAxisAlignment.center,
@@ -119,7 +140,10 @@ Column(
 )
 ```
 
+![Contoh row](/readmeassets/images/row.png)
+
 #### GridView
+
 Menampilkan widget dalam grid.
 
 ```dart
@@ -138,5 +162,8 @@ GridView.builder(
 )
 ```
 
+![Contoh Grid](/readmeassets/images/gridview.png)
+
 ### Kesimpulan
+
 Widget adalah kunci utama dalam membangun antarmuka pengguna di Flutter. Semua yang ada di Flutter adalah widget.
