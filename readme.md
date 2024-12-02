@@ -162,7 +162,7 @@ GridView.builder(
 )
 ```
 
-![Contoh Grid](/readmeassets/images/gridview.png){: width="300px"}
+<img src="/readmeassets/images/gridview.png" alt="Gambar grid" width="300"/>
 
 ### Kesimpulan
 
