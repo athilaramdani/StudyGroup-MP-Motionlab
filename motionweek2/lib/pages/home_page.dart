@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
       'title': 'Headphone',
       'price': '\$45.00',
       'image': 'assets/images/headphones.png',
-      'category': 'Others', // Not in chip filters
+      'category': 'Others',
       'isFavorite': false,
     },
     {
@@ -149,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                   const Text(
                     'Our Best Seller',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 22,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

@@ -12,19 +12,25 @@ class CustomAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           IconButton(
-            icon: const Icon(Icons.menu, color: Colors.black),
+            icon: Image.asset(
+              'assets/images/internal/menu.png',
+              height: 15,
+            ),
             onPressed: () {},
           ),
           Row(
             children: [
               Image.asset(
                 "assets/images/internal/officiallogo.png",
-                height: 40,
+                height: 47,
               ),
             ],
           ),
           IconButton(
-            icon: const Icon(Icons.shopping_bag_outlined, color: Colors.black),
+            icon: Image.asset(
+              'assets/images/internal/baglogo.png',
+              width: 23,
+            ),
             onPressed: () {},
           ),
         ],
