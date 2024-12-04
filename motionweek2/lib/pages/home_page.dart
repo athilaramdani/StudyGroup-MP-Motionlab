@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                       hintText: 'Search',
                       hintStyle: TextStyle(
                         fontFamily: 'Inter',
-                        color: Color(0x93161B28).withOpacity(0.58),
+                        color: const Color(0x93161B28).withOpacity(0.58),
                       ),
                       prefixIcon: const Icon(Icons.search),
                       filled: true,

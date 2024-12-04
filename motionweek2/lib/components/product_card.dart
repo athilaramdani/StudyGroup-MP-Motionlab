@@ -8,13 +8,13 @@ class ProductCard extends StatelessWidget {
   final bool isFavorite;
 
   const ProductCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.price,
     required this.image,
     this.description,
     required this.isFavorite,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
