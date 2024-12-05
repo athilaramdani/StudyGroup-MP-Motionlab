@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ConfirmationUserAccount extends StatelessWidget {
   final String buttonText;
@@ -30,8 +31,16 @@ class ConfirmationUserAccount extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
+                minimumSize: Size(double.infinity, 55)
               ),
-              child: Text(buttonText, style: TextStyle(color: Colors.white)),
+              child: Text(
+                buttonText,
+                style: GoogleFonts.roboto(
+                  color: Colors.white,
+                  fontSize: 20, // Ukuran font 20
+                  fontWeight: FontWeight.bold, // Bold
+                ),
+              ),
             ),
           ),
         ),
@@ -43,7 +52,11 @@ class ConfirmationUserAccount extends StatelessWidget {
               onTap: onTap,
               child: Text(
                 buttonText == "Login" ? "Register" : "Login",
-                style: TextStyle(color: Color(0XFF00623B)),
+                style: GoogleFonts.roboto(
+                  color: Color(0XFF00623B),
+                  fontSize: 16, // Anda bisa menyesuaikan ukuran font sesuai kebutuhan
+                  fontWeight: FontWeight.w600, // Semi-bold
+                ),
               ),
             ),
           ],

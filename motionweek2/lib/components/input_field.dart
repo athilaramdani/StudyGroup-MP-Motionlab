@@ -1,5 +1,6 @@
 // input_field.dart
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class InputField extends StatelessWidget {
   final String hintText;
@@ -21,6 +22,7 @@ class InputField extends StatelessWidget {
         obscureText: isPassword,
         decoration: InputDecoration(
           hintText: hintText,
+          hintStyle: GoogleFonts.roboto(fontSize: 14, color: Color(0XFF344E41)),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(color: Color(0XFF344E41)),

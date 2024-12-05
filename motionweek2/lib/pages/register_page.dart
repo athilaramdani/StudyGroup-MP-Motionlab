@@ -17,9 +17,19 @@ class RegisterPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "Create Account",
-              style: GoogleFonts.plusJakartaSans(fontSize: 24, fontWeight: FontWeight.bold),
+              "Register",
+              style: GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.bold),
             ),
+            SizedBox(height: 8,),
+            Text(
+              "Create your account for Happy Shopping",
+              style: GoogleFonts.roboto(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Color(0XFF707070)
+              ),
+            ),
+            SizedBox(height: 30,),
             InputField(
               hintText: 'Full Name',
               prefixIcon: Padding(

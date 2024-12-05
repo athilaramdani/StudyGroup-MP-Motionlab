@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:motionweek2/components/input_field.dart';
 import 'package:motionweek2/components/confirmation_user_account.dart'; // Import komponen baru
 import 'register_page.dart'; // Pastikan untuk mengimpor halaman Register
@@ -16,14 +17,20 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Lottie.asset('assets/lottie/lottie_login.json', height: 300),
             Text(
               "Welcome!",
-              style: GoogleFonts.plusJakartaSans(fontSize: 24, fontWeight: FontWeight.bold),
+              style: GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             Text(
               "Happy Shopping All",
-              style: GoogleFonts.plusJakartaSans(fontSize: 16),
+              style: GoogleFonts.poppins(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: Color(0XFF707070)
+              ),
             ),
+
             InputField(
               hintText: 'Email',
               prefixIcon: Padding(
