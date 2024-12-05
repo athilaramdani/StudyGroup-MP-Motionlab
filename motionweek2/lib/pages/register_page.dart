@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:motionweek2/components/input_field.dart';
-import 'package:motionweek2/components/confirmation_user_account.dart'; // Import komponen baru
-import 'register_page.dart'; // Pastikan untuk mengimpor halaman Register
+import 'package:motionweek2/components/confirmation_user_account.dart'; 
+import 'login_page.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +17,19 @@ class LoginPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "Welcome!",
+              "Create Account",
               style: GoogleFonts.plusJakartaSans(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            Text(
-              "Happy Shopping All",
-              style: GoogleFonts.plusJakartaSans(fontSize: 16),
+            InputField(
+              hintText: 'Full Name',
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  'assets/images/internal/userlogo.png',
+                  width: 20,
+                  height: 20,
+                ),
+              ),
             ),
             InputField(
               hintText: 'Email',
@@ -47,11 +54,23 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
             ),
+            InputField(
+              hintText: 'Confirm Password',
+              isPassword: true,
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  'assets/images/internal/passwordlogo.png',
+                  width: 20,
+                  height: 20,
+                ),
+              ),
+            ),
             ConfirmationUserAccount(
-              buttonText: "Login",
-              displayText: "Don't have an account? ",
+              buttonText: "Register",
+              displayText: "Already have an account? ",
               onTap: () {
-                Navigator.pushNamed(context, '/register');
+                Navigator.pop(context);
               },
             ),
           ],
