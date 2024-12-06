@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:motionweek2/components/input_field.dart';
-import 'package:motionweek2/components/confirmation_user_account.dart'; 
+import 'package:motionweek2/components/confirmation_user_account.dart';
 import 'login_page.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -18,18 +18,22 @@ class RegisterPage extends StatelessWidget {
           children: [
             Text(
               "Register",
-              style: GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.bold),
+              style: GoogleFonts.poppins(
+                  fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8,),
+            SizedBox(
+              height: 8,
+            ),
             Text(
               "Create your account for Happy Shopping",
               style: GoogleFonts.roboto(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: Color(0XFF707070)
-              ),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0XFF707070)),
             ),
-            SizedBox(height: 30,),
+            SizedBox(
+              height: 30,
+            ),
             InputField(
               hintText: 'Full Name',
               prefixIcon: Padding(

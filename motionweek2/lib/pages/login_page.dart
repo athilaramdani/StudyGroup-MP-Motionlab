@@ -20,17 +20,16 @@ class LoginPage extends StatelessWidget {
             Lottie.asset('assets/lottie/lottie_login.json', height: 300),
             Text(
               "Welcome!",
-              style: GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.bold),
+              style: GoogleFonts.poppins(
+                  fontSize: 24, fontWeight: FontWeight.bold),
             ),
             Text(
-              "Happy Shopping All",
+              "Happy Shopping Alrerfsl",
               style: GoogleFonts.poppins(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: Color(0XFF707070)
-              ),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0XFF707070)),
             ),
-
             InputField(
               hintText: 'Email',
               prefixIcon: Padding(
