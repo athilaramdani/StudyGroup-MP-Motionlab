@@ -8,7 +8,12 @@
             "name": "motionweek2",
             "cwd": "motionweek2",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args": [
+                "-d",
+                "chrome"
+            ]
+            
         }, { "name": "motionweek2 (profile mode)", "cwd": "motionweek2",
             "request": "launch",
             "type": "dart",
