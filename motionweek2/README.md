@@ -1,4 +1,4 @@
-# motionweek2
+# motionweekActivity
 
 A new Flutter project.
 

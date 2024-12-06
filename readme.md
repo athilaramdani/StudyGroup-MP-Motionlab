@@ -1,7 +1,9 @@
-# **Study Group MP - Week 3**
-
-**Athila Ramdani Saputra**  
-**NIM: 103012300132**
+<h1 align="center"><b> Study Group MP - Week 3 </b></h1>
+<p style="color: #4682b4;"><b>Athila Ramdani Saputra</b></p>
+<p style="color: #1e90ff;"><b>NIM: 103012300132</b></p>
+<a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.herokuapp.com/?lines=Hello,+gais!+👋;ini+rangkuman+SG W3;By+AthDanz06😎;&center=true&size=30">
+</a>
 
 ---
 
@@ -187,7 +189,7 @@ import 'package:get/get.dart';
 import 'counter_controller.dart';
 
 class HomePage extends StatelessWidget {
-  final CounterController counterController = Get.put(CounterController()); // Instantiate controller
+  final CounterController counterController = Get.put(CounterController());
 
   @override
   Widget build(BuildContext context) {
@@ -240,7 +242,7 @@ import 'package:get/get.dart';
 class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final args = Get.arguments as Map<String, String>?; // Retrieve arguments
+    final args = Get.arguments as Map<String, String>?;
     return Scaffold(
       appBar: AppBar(title: Text("Second Page")),
       body: Center(
