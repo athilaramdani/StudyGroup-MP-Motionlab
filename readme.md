@@ -1,11 +1,9 @@
-<h1 align="center"><b> Study Group MP - Week 3 </b></h1>
-<p style="color: #4682b4;"><b>Athila Ramdani Saputra</b></p>
-<p style="color: #1e90ff;"><b>NIM: 103012300132</b></p>
-<a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com/?lines=Hello,+gais!+👋;ini+rangkuman+SG W3;By+AthDanz06😎;&center=true&size=30">
-</a>
+# **Study Group MP - Week 3**
 
----
+**Athila Ramdani Saputra**
+**NIM: 103012300132**
+
+## [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Hello+temen+temen+!;Ini+Rangkuman+W3+Athdanz😎)](https://git.io/typing-svg)
 
 ## Rangkuman Week 3: Package, Navigation dan Pengenalan State di Flutter
 
