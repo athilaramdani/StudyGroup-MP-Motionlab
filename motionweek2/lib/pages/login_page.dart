@@ -17,7 +17,7 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Lottie.asset('assets/lottie/lottie_login.json', height: 300),
+            Lottie.asset('assets/lottie/login_cart.json', height: 300),
             Text(
               "Welcome!",
               style: GoogleFonts.poppins(
