@@ -1,9 +1,18 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:motionweek2/pages/detail_product.dart';
-import 'package:motionweek2/pages/home_page.dart'; 
+import 'package:motionweek2/pages/home_page.dart';
 import 'package:motionweek2/pages/login_page.dart';
 import 'package:motionweek2/pages/register_page.dart';
-import 'package:motionweek2/pages/splash/splash_page.dart'; 
+import 'package:motionweek2/pages/splash/splash_page.dart';
+
+// void main() => runApp(
+//       DevicePreview(
+//         enabled: !kReleaseMode,
+//         builder: (context) => MyApp(), // Wrap your app
+//       ),
+//     );
 
 void main() {
   runApp(const MyApp());
