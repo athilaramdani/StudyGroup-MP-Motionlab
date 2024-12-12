@@ -3,7 +3,7 @@
 **Athila Ramdani Saputra**
 **NIM: 103012300132**
 
-## [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Hello+temen+temen+!;Ini+Rangkuman+W3+Athdanz😎)](https://git.io/typing-svg)
+## [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Hello+temen+temen+!;Ini+Rangkuman+W4+Athdanz😎)](https://git.io/typing-svg)
 
 ## Rangkuman Week 4: State Management di Flutter dengan GetX
 
