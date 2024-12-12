@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:motionweek2/pages/cart_page.dart';
 import 'package:motionweek2/pages/detail_product.dart';
 import 'package:motionweek2/pages/home_page.dart';
 import 'package:motionweek2/pages/login_page.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomePage(),
         '/register': (context) => const RegisterPage(),
         '/login': (context) => const LoginPage(), // Add route for LoginPage
+        '/cart': (context) => const CartPage(),
       },
     );
   }

@@ -5,154 +5,121 @@
 
 ## [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Hello+temen+temen+!;Ini+Rangkuman+W3+Athdanz😎)](https://git.io/typing-svg)
 
-## Rangkuman Week 3: Package, Navigation dan Pengenalan State di Flutter
+## Rangkuman Week 4: State Management di Flutter dengan GetX
 
-Di **Week 3** ini SG nya dilakukan selama 2 hari temen temen di hari pertama bersama kak **raihan** dan dihari ke dua bersama kak **aziz**, dibawah adalah rangkuman dari 2 hari pembelajaran nya tentang package, navigation, dan pengenalan state
+Di **Week 4** ini yang dimentoring oleh bang **Aziz**, kita mempelajari konsep State Management di Flutter, dengan fokus pada penggunaan GetX sebagai solusi manajemen state yang efisien.
 
-### **DAY 1: Package dan Navigation**
+### **Pengertian State Management**
 
-#### **Apa itu Package?**
+State Management adalah cara mengelola data atau informasi dalam suatu aplikasi. State sendiri merepresentasikan kondisi aplikasi pada suatu waktu tertentu.
 
-Package adalah koleksi kode dan fungsi tambahan yang membantu pengembangan aplikasi Flutter dengan lebih cepat. Package dapat mencakup utilitas, widget tambahan, atau bahkan fitur besar seperti animasi.
+#### Diagram Perputaran State
 
-#### **Contoh Package:**
-
-1. **Lottie**: Animasi berbasis JSON yang sangat ringan dan mudah diimplementasikan.
-2. **Google Fonts**: Integrasi font Google untuk desain UI yang menarik.
-3. **Flutter Native Splash**: Membuat splash screen secara native dan mudah.
-
-#### **Cara Cepat Memakai Dependencies di VSCode**
-
-1. Tekan `Ctrl + Shift + P`.
-2. Ketikkan `Pub: Add Dependency`.
-3. Pilih package yang ingin digunakan.
-
-#### **Navigation**
-
-Navigation digunakan untuk berpindah antar halaman dalam aplikasi Flutter. Cara umum adalah dengan menggunakan `Navigator.push` dan `Navigator.pop`.
-
-**Contoh Kode Navigasi Sederhana dengan Named Routes:**
-
-1. **Definisikan Routes di `MaterialApp`:**
-
-```dart
-MaterialApp(
-  initialRoute: '/',
-  routes: {
-    '/': (context) => HomePage(),
-    '/second': (context) => SecondPage(),
-  },
-);
+```
+Data → Who Needs It
+Model (Data) ↔ Controller (Logic) ↔ View (UI)
 ```
 
-2. **Navigasi ke halaman lain**
+### **MVC (Model View Controller)**
+
+MVC adalah pola desain yang memisahkan aplikasi menjadi 3 komponen utama:
+- **Model**: Representasi data
+- **View**: Tampilan antarmuka pengguna
+- **Controller**: Penghubung antara Model dan View
+
+### **State Management dengan GetX**
+
+GetX menyediakan dua pendekatan utama untuk manajemen state:
+
+#### 1. Reactive State Management
+
+Digunakan untuk observasi langsung perubahan variabel menggunakan `.obs`
+
+Tipe data Reactive:
+- `RxList<T>`: Untuk list dengan tipe generik
+- `RxInt`
+- `RxString`
+- Dan lain-lain
+
+**Contoh Implementasi Reactive:**
 
 ```dart
-Navigator.pushNamed(context, '/second');
-```
+import 'package:get/get.dart';
 
-3. **Kembali ke Halaman Sebelumnya:**
+class CounterController extends GetxController {
+  // Reactive variable
+  var counter = 0.obs;
 
-```dart
-Navigator.pop(context);
-```
-
-### **DAY 2: Pengenalan State di Flutter**
-
-#### **Apa itu State?**
-
-State adalah data atau informasi yang menggambarkan kondisi widget pada saat tertentu. Perubahan pada state akan memengaruhi tampilan widget.
-
-#### Stateless Widget vs Stateful Widget
-
-- **Stateless Widget**: Tidak memiliki state yang berubah. Digunakan untuk UI statis. Contoh :
-
-```dart
-class MyStatelessWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Text('Saya Stateless!');
+  // Method untuk increment
+  void increment() {
+    counter++;
   }
 }
-```
 
-- **Stateful Widget**: Memiliki state yang dapat berubah. Digunakan untuk UI dinamis. Contoh :
-
-```dart
-class MyStatefulWidget extends StatefulWidget {
-  @override
-  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
-}
-
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class CounterView extends StatelessWidget {
+  final CounterController controller = Get.put(CounterController());
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text('Counter: $_counter'),
-        ElevatedButton(
-          onPressed: _incrementCounter,
-          child: Text('Tambah'),
-        ),
-      ],
+    return Scaffold(
+      body: Center(
+        child: Obx(() => Text(
+          'Counter: ${controller.counter}',
+          style: TextStyle(fontSize: 24),
+        )),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: controller.increment,
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
-
 ```
 
-#### Masalah `setState` pada Aplikasi Kompleks
+#### 2. Simple State Management
 
-`setState` dapat menyebabkan masalah kinerja pada aplikasi besar karena seluruh widget terkait akan di-render ulang. Oleh karena itu, digunakan solusi seperti BLoC, Provider, atau GetX untuk pengelolaan state yang lebih efisien.
+Digunakan tanpa RxType, menggunakan method `update()`
 
-#### Widget Tree dan State Management
-
-Widget tree adalah struktur hierarki widget yang membentuk aplikasi Flutter.
-<img src="/readmeassets/images/flutter-widgets.png"></img>
-
-#### Inherited Widget
-
-Digunakan untuk berbagi data ke widget lain tanpa perlu melewati parameter setiap kali. Contoh sederhananya adalah penggunaan Theme dan MediaQuery.
-
-**Contoh Inherited Widget**
+**Contoh Implementasi Simple:**
 
 ```dart
-class MyInheritedWidget extends InheritedWidget {
-  final String data;
+import 'package:get/get.dart';
 
-  const MyInheritedWidget({
-    required this.data,
-    required Widget child,
-  }) : super(child: child);
+class SimpleCounterController extends GetxController {
+  int counter = 0;
 
-  @override
-  bool updateShouldNotify(MyInheritedWidget oldWidget) {
-    return data != oldWidget.data;
-  }
-
-  static MyInheritedWidget? of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<MyInheritedWidget>();
+  void increment() {
+    counter++;
+    update(); // Memicu rebuild widget
   }
 }
 
+class SimpleCounterView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: GetBuilder<SimpleCounterController>(
+          init: SimpleCounterController(),
+          builder: (controller) => Text(
+            'Counter: ${controller.counter}',
+            style: TextStyle(fontSize: 24),
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: Get.find<SimpleCounterController>().increment,
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
 ```
 
-### BONUS -> Simulasi GetX
+### **Konfigurasi GetX**
 
-Berikut adalah contoh implementasi GetX untuk pengelolaan state dan navigasi di Flutter:
-
-#### Setup GetX
-
-1. Tambahkan GetX sebagai dependency:
-
+1. Tambahkan dependency di `pubspec.yaml`:
 ```yaml
 dependencies:
   get: ^4.6.5
@@ -160,97 +127,22 @@ dependencies:
 
 2. Jalankan `flutter pub get`
 
-#### Contoh code **GetX**
-
-**Controller untuk State Management**
-Controller digunakan untuk mengelola data dan logika aplikasi.
-
+3. Import di file Dart:
 ```dart
 import 'package:get/get.dart';
-
-class CounterController extends GetxController {
-  var counter = 0.obs; // Observable variable
-
-  void increment() {
-    counter++;
-  }
-}
-
 ```
 
-**UI dengan State Management**
-Gunakan `Obx` untuk mendengarkan perubahan pada variabel observable.
+### **Perbedaan Utama**
 
-```dart
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'counter_controller.dart';
+- **Reactive**: Gunakan `.obs` dan `Obx()` untuk observasi otomatis
+- **Simple**: Gunakan `update()` dan `GetBuilder()` untuk kontrol manual
 
-class HomePage extends StatelessWidget {
-  final CounterController counterController = Get.put(CounterController());
+### **Apa sih tips penggunaannya?**
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("GetX State Management")),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Obx(() => Text(
-                  "Counter: ${counterController.counter}",
-                  style: TextStyle(fontSize: 24),
-                )),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: counterController.increment,
-              child: Text("Increment"),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+- Gunakan Reactive untuk variabel yang sering berubah
+- Gunakan Simple untuk kontrol lebih detail
+- Selalu inisialisasi controller dengan `Get.put()` atau `Get.lazyPut()`
 
-```
+## Penutup
 
-#### Navigasi dengan getX
-
-Navigasi antar halaman menggunakan Get.to.
-
-1. **Halaman HomePage:**
-
-```dart
-ElevatedButton(
-  onPressed: () {
-    Get.to(() => SecondPage(), arguments: {"message": "Hello from HomePage"});
-  },
-  child: Text("Go to Second Page"),
-),
-
-```
-
-2. **Halaman SecondPage:**
-
-```dart
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-class SecondPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final args = Get.arguments as Map<String, String>?;
-    return Scaffold(
-      appBar: AppBar(title: Text("Second Page")),
-      body: Center(
-        child: Text(
-          args?['message'] ?? "No Message",
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
-  }
-}
-
-```
+State Management dengan GetX memberikan fleksibilitas dan kemudahan dalam mengelola state aplikasi Flutter, membantu membuat kode lebih bersih dan terorganisir.

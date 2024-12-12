@@ -57,7 +57,7 @@ class LoginPage extends StatelessWidget {
               buttonText: "Login",
               displayText: "Don't have an account? ",
               onTap: () {
-                Navigator.pushNamed(context, '/register');
+                Navigator.pushNamed(context, '/cart');
               },
             ),
           ],
