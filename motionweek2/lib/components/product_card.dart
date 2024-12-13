@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class ProductCard extends StatelessWidget {
   final String title;
-  final String price;
+  final double price;
   final String image;
   final String? description;
   final bool isFavorite;
@@ -65,7 +65,7 @@ class ProductCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  price,
+                  '\$${price.toStringAsFixed(2)}',
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

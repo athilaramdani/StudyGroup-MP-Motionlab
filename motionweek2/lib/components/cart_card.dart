@@ -5,7 +5,7 @@ import 'package:motionweek2/controller/cart_controller.dart';
 
 class CartCard extends StatelessWidget {
   final String title;
-  final String price;
+  final double price;
   final String image;
   final int index;
 
@@ -54,7 +54,7 @@ class CartCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        price,
+                        '\$${price.toStringAsFixed(2)}',
                         style: TextStyle(
                           fontSize: 14,
                           color: AppColor.primaryColor,

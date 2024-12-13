@@ -26,10 +26,7 @@ class CartController extends GetxController {
   double calculateTotalPrice() {
     double total = 0.0;
     for (int i = 0; i < quantities.length; i++) {
-      String rawPrice = StaticData.products[i]['price'];
-      String cleanedPrice = rawPrice.replaceAll(
-          RegExp(r'[^\d.]'), '');
-      double price = double.tryParse(cleanedPrice) ?? 0.0;
+      double price = StaticData.products[i]['price'];
       total += price * quantities[i];
     }
     return total;

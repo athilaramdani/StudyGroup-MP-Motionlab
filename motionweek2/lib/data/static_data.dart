@@ -11,7 +11,7 @@ class StaticData {
   static final List<Map<String, dynamic>> products = [
     {
       'title': 'Mi Band 8 Pro',
-      'price': '\$54.00',
+      'price': 54.00,
       'image': 'assets/images/IMBand.png',
       'category': 'Watch',
       'description': 'High-quality smart band for daily fitness tracking.',
@@ -19,7 +19,7 @@ class StaticData {
     },
     {
       'title': 'Lycra Men\'s shirt',
-      'price': '\$12.00',
+      'price': 12.00,
       'image': 'assets/images/tshirt.png',
       'category': 'Shirt',
       'description': 'Comfortable Lycra shirt for men.',
@@ -27,7 +27,7 @@ class StaticData {
     },
     {
       'title': 'Headphone',
-      'price': '\$45.00',
+      'price': 45.00,
       'image': 'assets/images/headphones.png',
       'category': 'Others',
       'description': 'High-quality headphones for great sound.',
@@ -35,7 +35,7 @@ class StaticData {
     },
     {
       'title': 'Sneakers',
-      'price': '\$35.00',
+      'price': 35.00,
       'image': 'assets/images/shoes.png',
       'category': 'Shoes',
       'description': 'Stylish and comfortable sneakers.',
@@ -43,9 +43,9 @@ class StaticData {
     },
     {
       'title': 'Dress',
-      'price': '\$30.00',
+      'price': 30.00,
       'image': 'assets/images/shoes.png',
-      'category': 'dress',
+      'category': 'Dress',
       'description': 'Stylish and comfortable sneakers.',
       'isFavorite': false,
     },
