@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:motionweek2/components/input_field.dart';
 import 'package:motionweek2/components/confirmation_user_account.dart';
-import 'login_page.dart';
+import 'package:get/get.dart';
+import 'package:motionweek2/ui_kit/colors.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -10,7 +11,7 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFFFCFFFE),
+      backgroundColor: AppColor.whiteColor2,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -27,9 +28,10 @@ class RegisterPage extends StatelessWidget {
             Text(
               "Create your account for Happy Shopping",
               style: GoogleFonts.roboto(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: Color(0XFF707070)),
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: AppColor.grayColor,
+              ),
             ),
             SizedBox(
               height: 30,
@@ -84,7 +86,7 @@ class RegisterPage extends StatelessWidget {
               buttonText: "Register",
               displayText: "Already have an account? ",
               onTap: () {
-                Navigator.pop(context);
+                Get.back();
               },
             ),
           ],

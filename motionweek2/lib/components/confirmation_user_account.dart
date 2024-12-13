@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ConfirmationUserAccount extends StatelessWidget {
@@ -24,7 +25,7 @@ class ConfirmationUserAccount extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/home');
+                Get.toNamed('/home');
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0XFF00623B),
@@ -37,8 +38,8 @@ class ConfirmationUserAccount extends StatelessWidget {
                 buttonText,
                 style: GoogleFonts.roboto(
                   color: Colors.white,
-                  fontSize: 20, // Ukuran font 20
-                  fontWeight: FontWeight.bold, // Bold
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -54,8 +55,8 @@ class ConfirmationUserAccount extends StatelessWidget {
                 buttonText == "Login" ? "Register" : "Login",
                 style: GoogleFonts.roboto(
                   color: Color(0XFF00623B),
-                  fontSize: 16, // Anda bisa menyesuaikan ukuran font sesuai kebutuhan
-                  fontWeight: FontWeight.w600, // Semi-bold
+                  fontSize: 16, 
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),

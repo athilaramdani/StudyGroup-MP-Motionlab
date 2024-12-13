@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -31,7 +32,11 @@ class CustomAppBar extends StatelessWidget {
               'assets/images/internal/baglogo.png',
               width: 23,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(
+                '/cart',
+              );
+            },
           ),
         ],
       ),

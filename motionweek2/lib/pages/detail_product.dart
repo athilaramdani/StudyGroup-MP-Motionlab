@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:motionweek2/ui_kit/colors.dart';
 
 class DetailProductPage extends StatelessWidget {
   const DetailProductPage({super.key});
@@ -24,7 +26,7 @@ class DetailProductPage extends StatelessWidget {
                 children: [
                   IconButton(
                     icon: const Icon(Icons.arrow_back_ios),
-                    onPressed: () => Navigator.pop(context),
+                    onPressed: () => Get.back(),
                   ),
                   Text(
                     product['title'],
@@ -92,7 +94,7 @@ class DetailProductPage extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               padding: const EdgeInsets.symmetric(vertical: 11),
               decoration: BoxDecoration(
-                color: const Color(0xFF00623B),
+                color: AppColor.primaryColor,
                 borderRadius: BorderRadius.circular(10.0),
               ),
               width: double.infinity,

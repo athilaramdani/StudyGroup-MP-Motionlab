@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:motionweek2/components/appbar.dart';
 import 'package:motionweek2/components/bottom_navigation_bar.dart';
 import 'package:motionweek2/components/product_card.dart';
+import 'package:motionweek2/data/static_data.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,55 +13,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  final List<String> _chipLabels = [
-    'All',
-    'Watch',
-    'Shirt',
-    'Shoes',
-    'Jacket',
-    'Dress'
-  ];
-
-  final List<Map<String, dynamic>> _products = [
-    {
-      'title': 'Mi Band 8 Pro',
-      'price': '\$54.00',
-      'image': 'assets/images/IMBand.png',
-      'category': 'Watch',
-      'description':
-          'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum High-quality smart band for daily fitness tracking.',
-      'isFavorite': true,
-    },
-    {
-      'title': 'Lycra Men\'s shirt',
-      'price': '\$12.00',
-      'image': 'assets/images/tshirt.png',
-      'category': 'Shirt',
-      'isFavorite': false,
-    },
-    {
-      'title': 'Headphone',
-      'price': '\$45.00',
-      'image': 'assets/images/headphones.png',
-      'category': 'Others',
-      'isFavorite': false,
-    },
-    {
-      'title': 'Sneakers',
-      'price': '\$35.00',
-      'image': 'assets/images/shoes.png',
-      'category': 'Shoes',
-      'isFavorite': false,
-    },
-  ];
 
   @override
   Widget build(BuildContext context) {
-    final String selectedCategory = _chipLabels[_selectedIndex];
+    final String selectedCategory = StaticData.chipLabels[_selectedIndex];
     final List<Map<String, dynamic>> filteredProducts =
         selectedCategory == 'All'
-            ? _products
-            : _products
+            ? StaticData.products
+            : StaticData.products
                 .where((product) => product['category'] == selectedCategory)
                 .toList();
 
@@ -106,14 +66,15 @@ class _HomePageState extends State<HomePage> {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: List.generate(_chipLabels.length, (index) {
+                      children:
+                          List.generate(StaticData.chipLabels.length, (index) {
                         final bool isSelected = _selectedIndex == index;
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: FilterChip(
                             showCheckmark: false,
                             label: Text(
-                              _chipLabels[index],
+                              StaticData.chipLabels[index],
                               style: TextStyle(
                                 fontFamily: isSelected ? 'Raleway' : 'Inter',
                                 fontWeight: isSelected

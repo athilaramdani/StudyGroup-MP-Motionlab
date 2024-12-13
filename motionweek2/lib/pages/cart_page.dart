@@ -1,46 +1,73 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:motionweek2/components/cart_card.dart';
 import 'package:motionweek2/controller/cart_controller.dart';
+import 'package:motionweek2/data/static_data.dart';
+import 'package:motionweek2/ui_kit/colors.dart';
 
 class CartPage extends StatelessWidget {
-  const CartPage({super.key});
+  final CartController cartController = Get.put(CartController());
 
   @override
   Widget build(BuildContext context) {
-    final cartController = Get.put(CartController());
-    return Obx(
-      () => Scaffold(
-          appBar: AppBar(
-            leading: SvgPicture.asset("assets/svg/back_button.svg"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'My Cart',
+          style: GoogleFonts.inter(fontSize: 22),
+        ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+      ),
+      body: Container(
+        color: AppColor.whiteColor,
+        child: ListView.builder(
+          itemCount: StaticData.products.length,
+          itemBuilder: (context, index) {
+            final product = StaticData.products[index];
+            return CartCard(
+              title: product['title'],
+              price: product['price'],
+              image: product['image'],
+              index: index,
+            );
+          },
+        ),
+      ),
+      bottomNavigationBar: GestureDetector(
+        onTap: () {
+          final totalPrice = cartController.calculateTotalPrice();
+          Get.toNamed('/invoice', arguments: {
+            'username': StaticData.userlogin['nama'],
+            'email': StaticData.userlogin['email'],
+            'totalPrice': totalPrice.toStringAsFixed(2),
+          });
+        },
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          padding: const EdgeInsets.symmetric(vertical: 11),
+          decoration: BoxDecoration(
+            color: AppColor.primaryColor,
+            borderRadius: BorderRadius.circular(10.0),
           ),
-          body: Column(
-            children: [
-              Expanded(
-                child: Card(
-                  child: ListTile(
-                    trailing: SizedBox(
-                      width: 200,
-                      height: 200,
-                      child: Card(
-                        child: Row(
-                          children: [
-                            IconButton(
-                                onPressed: cartController.quantityDecrement,
-                                icon: Icon(Icons.remove)),
-                            Text("${cartController.quantity}"),
-                            IconButton(
-                                onPressed: cartController.quantityIncrement,
-                                icon: Icon(Icons.add)),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          )),
+          width: double.infinity,
+          child: const Text(
+            "Buy Now",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Raleway',
+              color: Colors.white,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ),
     );
   }
 }
