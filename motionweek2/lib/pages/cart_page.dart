@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:motionweek2/components/cart_card.dart';
 import 'package:motionweek2/components/custom_appbar_2.dart';
 import 'package:motionweek2/controller/cart_controller.dart';
@@ -51,12 +52,11 @@ class CartPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0),
           ),
           width: double.infinity,
-          child: const Text(
+          child: Text(
             "Buy Now",
-            style: TextStyle(
+            style: GoogleFonts.roboto(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              fontFamily: 'Raleway',
               color: Colors.white,
             ),
             textAlign: TextAlign.center,

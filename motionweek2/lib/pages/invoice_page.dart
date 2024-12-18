@@ -6,9 +6,9 @@ import 'package:motionweek2/ui_kit/colors.dart';
 import 'package:motionweek2/components/custom_appbar_2.dart';
 
 class InvoicePage extends StatelessWidget {
-  final String username = Get.arguments['username'];
-  final String email = Get.arguments['email'];
-  final String totalPrice = Get.arguments['totalPrice'];
+  final String username = Get.arguments['username'] ?? '';
+  final String email = Get.arguments['email'] ?? '';
+  final String totalPrice = Get.arguments['totalPrice'] ?? '0';
 
   @override
   Widget build(BuildContext context) {
@@ -177,16 +177,20 @@ class InvoicePage extends StatelessWidget {
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColor.primaryColor,
-                        padding:
-                            EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+                        minimumSize: Size(
+                          MediaQuery.of(context).size.width - 40,
+                          58,
+                        ),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                       child: Text(
                         'Back to Home',
-                        style:
-                            TextStyle(fontSize: 16, color: AppColor.whiteColor),
+                        style: GoogleFonts.roboto(
+                            fontSize: 20,
+                            color: AppColor.whiteColor,
+                            fontWeight: FontWeight.w500),
                       ),
                     ),
                   ],
