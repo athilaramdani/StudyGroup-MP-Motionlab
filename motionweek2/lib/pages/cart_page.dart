@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:motionweek2/components/cart_card.dart';
+import 'package:motionweek2/components/custom_appbar_2.dart';
 import 'package:motionweek2/controller/cart_controller.dart';
 import 'package:motionweek2/data/static_data.dart';
 import 'package:motionweek2/ui_kit/colors.dart';
@@ -12,32 +12,27 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'My Cart',
-          style: GoogleFonts.inter(fontSize: 22),
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Get.back();
-          },
-        ),
-      ),
-      body: Container(
-        color: AppColor.whiteColor,
-        child: ListView.builder(
-          itemCount: StaticData.products.length,
-          itemBuilder: (context, index) {
-            final product = StaticData.products[index];
-            return CartCard(
-              title: product['title'],
-              price: product['price'],
-              image: product['image'],
-              index: index,
-            );
-          },
-        ),
+      body: Column(
+        children: [
+          const CustomAppBar2(title: 'My Cart'),
+          Expanded(
+            child: Container(
+              color: AppColor.whiteColor,
+              child: ListView.builder(
+                itemCount: StaticData.products.length,
+                itemBuilder: (context, index) {
+                  final product = StaticData.products[index];
+                  return CartCard(
+                    title: product['title'],
+                    price: product['price'],
+                    image: product['image'],
+                    index: index,
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () {

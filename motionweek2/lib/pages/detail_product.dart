@@ -89,24 +89,29 @@ class DetailProductPage extends StatelessWidget {
                 ),
               ),
             ),
-            // Add to Bag Button
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-              padding: const EdgeInsets.symmetric(vertical: 11),
-              decoration: BoxDecoration(
-                color: AppColor.primaryColor,
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              width: double.infinity,
-              child: const Text(
-                "Add to bag",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Raleway',
-                  color: Colors.white,
+            GestureDetector(
+              onTap: () {
+                Get.toNamed('/cart');
+              },
+              child: Container(
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                padding: const EdgeInsets.symmetric(vertical: 11),
+                decoration: BoxDecoration(
+                  color: AppColor.primaryColor,
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
-                textAlign: TextAlign.center,
+                width: double.infinity,
+                child: const Text(
+                  "Add to bag",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Raleway',
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
           ],
