@@ -36,9 +36,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           IconButton(
             onPressed: () => _onItemTapped(1),
             icon: Icon(
-              _selectedIndex == 1
-                  ? Icons.account_balance_wallet
-                  : Icons.account_balance_wallet_outlined,
+              _selectedIndex == 1 ? Icons.favorite : Icons.favorite_border,
               color:
                   _selectedIndex == 1 ? Colors.white : const Color(0XFFB4DCCC),
             ),
@@ -46,19 +44,11 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           IconButton(
             onPressed: () => _onItemTapped(2),
             icon: Icon(
-              _selectedIndex == 2 ? Icons.favorite : Icons.favorite_border,
-              color:
-                  _selectedIndex == 2 ? Colors.white : const Color(0XFFB4DCCC),
-            ),
-          ),
-          IconButton(
-            onPressed: () => _onItemTapped(3),
-            icon: Icon(
-              _selectedIndex == 3
+              _selectedIndex == 2
                   ? Icons.notifications
                   : Icons.notifications_outlined,
               color:
-                  _selectedIndex == 3 ? Colors.white : const Color(0XFFB4DCCC),
+                  _selectedIndex == 2 ? Colors.white : const Color(0XFFB4DCCC),
             ),
           ),
         ],
