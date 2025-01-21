@@ -1,111 +1,110 @@
-# **Study Group MP - Week 5**
+# **Study Group MP - Week 6**
 
 **Athila Ramdani Saputra**  
 **NIM: 103012300132**
 
-## [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Hello+temen+temen+!;Ini+Rangkuman+W5+Athdanz😎)](https://git.io/typing-svg)
+## [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Hello+temen+temen+!;Ini+Rangkuman+W6+Athdanz😎)](https://git.io/typing-svg)
 
-## Rangkuman Week 5: Screen Utility, Theme, dan Penggunaan GetX dengan Bindings
+## Rangkuman Week 6: Working with API dan Future dalam Flutter
 
-Di **Week 5** ini, yang dimentoring oleh bang **Aziz** dan **raihan**, kita mempelajari bagaimana menggunakan **state management** GetX di Flutter.
+Di **Week 6** ini, kita mempelajari konsep penting dalam pengembangan aplikasi Flutter yaitu penggunaan API dan Future untuk menangani operasi asinkron.
 
-### **1. Screen Utility dan Theme**
+### **1. Future dalam Dart**
 
-#### Screen Utility
-Screen Utility adalah konsep yang digunakan untuk memastikan tampilan aplikasi dapat beradaptasi dengan berbagai ukuran layar perangkat.
+Future adalah konsep fundamental dalam Dart untuk menangani operasi asinkron. Ini merepresentasikan nilai atau error yang akan tersedia di masa depan.
 
-- **Responsiveness**: Pastikan UI terlihat baik di berbagai perangkat.
-- **Font Scaling**: Sesuaikan ukuran teks berdasarkan dimensi layar.
-- **Padding dan Margin Dinamis**: Gunakan ukuran yang fleksibel untuk elemen UI.
+#### Karakteristik Future:
+- Menangani operasi yang membutuhkan waktu
+- Berjalan secara asinkron (tidak blocking)
+- Ideal untuk operasi I/O seperti:
+  - Mengambil data dari internet
+  - Mengakses storage device
+  - Membaca file dari galeri
 
-#### Theme
-Theme digunakan untuk mengatur tampilan global aplikasi, seperti warna, font, dan gaya UI lainnya.
+### **2. Bekerja dengan API**
 
-### **2. Bindings: Mengelola Dependensi dengan GetX**
+API (Application Programming Interface) memungkinkan komunikasi antara client (aplikasi Flutter) dan server.
 
-Bindings adalah fitur di GetX yang digunakan untuk menginisialisasi dan mengelola dependensi, seperti controller atau service.
+#### Komponen Penting:
+- **Client**: Aplikasi Flutter yang kita buat
+- **Server**: Endpoint API (contoh: https://dummyjson.com)
+- **Format Data**: Umumnya menggunakan JSON
 
-#### **Mengapa Menggunakan Bindings?**
-- **Efisiensi Memori**: Dengan `lazyPut`, controller hanya akan dimuat saat diperlukan dan akan dihapus dari memori saat tidak digunakan.
-- **Organisasi Kode**: Memisahkan inisialisasi dependensi dari logika UI membuat kode lebih terstruktur.
+#### Tools yang Digunakan:
+1. **Dio Package**
+   - Lebih direkomendasikan dibanding http package
+   - Memiliki fitur interceptor
+   - Sintaks yang lebih sederhana
 
-#### **Cara Kerja Bindings**
-1. **LazyPut**: Menginisialisasi controller dengan disposisi otomatis dari memori.
-   ```dart
-   class MyBindings extends Bindings {
-     @override
-     void dependencies() {
-       Get.lazyPut<MyController>(() => MyController());
-     }
-   }
-   ```
+2. **Alat Bantu Development**
+   - Postman: Testing API endpoint
+   - JSONCrack: Visualisasi struktur JSON
+   - QuickType: Konversi JSON ke model Dart
 
-2. **Penerapan Bindings**: Bindings diterapkan di `GetMaterialApp` atau pada route tertentu.
-   ```dart
-   GetMaterialApp(
-     initialBinding: MyBindings(),
-     home: MyHomePage(),
-   );
-   ```
+### **3. Model dan JSON Parsing**
 
-#### **Cara Lain Memanggil Controller Menggunakan Bindings**
-Bindings juga bisa digunakan untuk mengambil data dari controller:
+Untuk menggunakan data JSON dalam aplikasi Flutter, kita perlu mengkonversinya ke bentuk model Dart.
+
+#### Langkah-langkah:
+1. Mendapatkan response JSON dari API
+2. Menggunakan QuickType untuk generate model Dart
+3. Implementasi model dalam aplikasi
 
 ```dart
-final MyController controller = Get.find<MyController>();
-```
+// Contoh model sederhana
+class Product {
+  final int id;
+  final String title;
+  final double price;
 
-### **3. Model: Representasi Data**
-Model digunakan untuk menyimpan dan memproses data. Di GetX, model biasanya dikelola di dalam controller.
+  Product({
+    required this.id,
+    required this.title,
+    required this.price,
+  });
 
-#### Contoh Model:
-```dart
-class User {
-  String name;
-  int age;
-
-  User({required this.name, required this.age});
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return Product(
+      id: json['id'],
+      title: json['title'],
+      price: json['price'].toDouble(),
+    );
+  }
 }
 ```
 
-Model dapat digunakan untuk memproses informasi yang diolah oleh controller.
+### **4. Arsitektur API dalam Flutter**
 
-### **4. SetState vs GetX**
+Implementasi API mengikuti alur yang terstruktur:
 
-- **SetState**: Memicu rebuild widget secara manual dari atas.
-  ```dart
-  setState(() {
-    counter++;
-  });
-  ```
-
-- **GetX**: Menggunakan CLI atau fitur reaktif untuk pembaruan otomatis.
-  ```dart
-  Obx(() => Text(controller.counter.toString()));
-  ```
-
-### **5. GetX CLI**
-GetX memiliki Command Line Interface (CLI) untuk mempermudah pengembangan aplikasi Flutter.
-
-#### **Fitur Utama GetX CLI:**
-- Membuat file controller, model, dan view secara otomatis.
-- Mengelola struktur folder proyek lebih rapi.
-
-**Install GetX CLI:**
-```bash
-pub global activate get_cli
+```
+REMOTE → SERVICE → CONTROLLER → UI
 ```
 
-**Contoh Penggunaan CLI:**
-1. Membuat proyek baru:
-   ```bash
-   get create project
-   ```
-2. Menambahkan page baru:
-   ```bash
-   get create page:home
-   ```
+#### Penjelasan Alur:
+- **REMOTE**: Layer untuk komunikasi langsung dengan API
+- **SERVICE**: Layer untuk mengolah data dari remote
+- **CONTROLLER**: Layer untuk logika bisnis
+- **UI**: Layer untuk menampilkan data ke user
+
+### **5. Best Practices**
+
+1. **Error Handling**
+   - Selalu implementasi try-catch
+   - Berikan feedback yang jelas ke user
+
+2. **Loading State**
+   - Tampilkan indikator loading saat fetch data
+   - Gunakan FutureBuilder atau GetX untuk state management
+
+3. **Data Caching**
+   - Pertimbangkan untuk menyimpan data sementara
+   - Kurangi beban server dan improve UX
 
 ### **Penutup**
-kita dapat membuat aplikasi Flutter yang responsif, terstruktur, dan efisien dalam manajemen memori apalagi menggunakan GetX CLI untuk mempercepat pengembangan! 🚀
+Dengan pemahaman tentang Future dan API, kita dapat membuat aplikasi Flutter yang dapat berkomunikasi dengan server dan menangani operasi asinkron dengan baik! 🚀
 
+### **Resources Tambahan**
+- [Dokumentasi Dio](https://pub.dev/packages/dio)
+- [DummyJSON API](https://dummyjson.com/docs)
+- [QuickType](https://quicktype.io/)
