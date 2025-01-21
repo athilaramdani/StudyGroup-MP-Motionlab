@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:motionshop/app/data/models/product_model_api.dart';
 import 'package:motionshop/app/modules/home/controllers/home_controller.dart';
 import 'package:motionshop/app/widgets/appbar.dart';
 import 'package:motionshop/app/widgets/bottom_navigation_bar.dart';
 import 'package:motionshop/app/widgets/product_card.dart';
-
 class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
 
@@ -22,108 +22,133 @@ class HomeView extends GetView<HomeController> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Obx(
-                () => Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 20),
-                    const Text(
-                      'Our way of loving\nyou back',
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        height: 1.5,
-                        fontFamily: 'Inter',
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Search',
-                        hintStyle: const TextStyle(
+                () {
+                  // Jika masih loading, tampilkan indikator
+                  if (controller.isLoading.value) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  // Jika chipLabels masih kosong atau data masih kosong
+                  if (controller.chipLabels.isEmpty) {
+                    return const Center(child: Text('No Categories'));
+                  }
+
+                  final filteredProducts = controller.filteredProducts;
+
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 20),
+                      const Text(
+                        'Our way of loving\nyou back',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          height: 1.5,
                           fontFamily: 'Inter',
-                          color: Color(0x93161B28),
-                        ),
-                        prefixIcon: const Icon(Icons.search),
-                        filled: true,
-                        fillColor: const Color(0xFFF1F1F1),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide.none,
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: List.generate(controller.chipLabels.length,
-                            (index) {
-                          final bool isSelected =
-                              controller.selectedIndex.value == index;
-                          return Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: FilterChip(
-                              showCheckmark: false,
-                              label: Text(
-                                controller.chipLabels[index],
-                                style: TextStyle(
-                                  fontFamily: isSelected ? 'Raleway' : 'Inter',
-                                  fontWeight: isSelected
-                                      ? FontWeight.bold
-                                      : FontWeight.normal,
-                                  color:
-                                      isSelected ? Colors.white : Colors.black,
+                      const SizedBox(height: 20),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Search',
+                          hintStyle: const TextStyle(
+                            fontFamily: 'Inter',
+                            color: Color(0x93161B28),
+                          ),
+                          prefixIcon: const Icon(Icons.search),
+                          filled: true,
+                          fillColor: const Color(0xFFF1F1F1),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide: BorderSide.none,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+
+                      // Chips dari controller.chipLabels
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: List.generate(controller.chipLabels.length,
+                              (index) {
+                            final isSelected =
+                                controller.selectedIndex.value == index;
+                            final label = controller.chipLabels[index];
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: FilterChip(
+                                showCheckmark: false,
+                                label: Text(
+                                  label,
+                                  style: TextStyle(
+                                    fontFamily:
+                                        isSelected ? 'Raleway' : 'Inter',
+                                    fontWeight: isSelected
+                                        ? FontWeight.bold
+                                        : FontWeight.normal,
+                                    color: isSelected
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
                                 ),
-                              ),
-                              selected: isSelected,
-                              onSelected: (_) =>
-                                  controller.setSelectedIndex(index),
-                              backgroundColor: isSelected
-                                  ? const Color(0XFF00623B)
-                                  : const Color(0XFFF2F2F2),
-                              selectedColor: const Color(0XFF00623B),
-                              side: BorderSide(
-                                color: isSelected
+                                selected: isSelected,
+                                onSelected: (_) =>
+                                    controller.setSelectedIndex(index),
+                                backgroundColor: isSelected
                                     ? const Color(0XFF00623B)
                                     : const Color(0XFFF2F2F2),
+                                selectedColor: const Color(0XFF00623B),
+                                side: BorderSide(
+                                  color: isSelected
+                                      ? const Color(0XFF00623B)
+                                      : const Color(0XFFF2F2F2),
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
                               ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                            ),
-                          );
-                        }),
+                            );
+                          }),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    const Text(
-                      'Our Best Seller',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
+                      const SizedBox(height: 20),
+                      const Text(
+                        'Our Best Seller',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    Expanded(
-                      child: GridView.count(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                        childAspectRatio: 0.7,
-                        children: controller.filteredProducts.map((product) {
-                          return ProductCard(
-                            title: product['title'],
-                            price: product['price'],
-                            image: product['image'],
-                            description: product['description'],
-                            isFavorite: product['isFavorite'],
-                          );
-                        }).toList(),
+                      const SizedBox(height: 10),
+
+                      Expanded(
+                        child: GridView.count(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          childAspectRatio: 0.7,
+                          children:
+                              filteredProducts.map((ProductElement product) {
+                            // Ganti param sesuai model
+                            return ProductCard(
+                              title: product.title ?? "",
+                              price: product.price ?? 0,
+                              image: product.thumbnail ??
+                                  (product.images?.isNotEmpty == true
+                                      ? product.images!.first
+                                      : ""),
+                              description: product.description ?? "",
+                              isFavorite: false,
+                            );
+                          }).toList(),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  );
+                },
               ),
             ),
           ),

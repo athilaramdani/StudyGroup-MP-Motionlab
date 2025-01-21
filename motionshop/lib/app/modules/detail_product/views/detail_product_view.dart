@@ -53,7 +53,7 @@ class DetailProductView extends GetView<DetailProductController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Image
-                    Image.asset(
+                    Image.network(
                       product['image'] ?? '',
                       width: double.infinity,
                       height: 300,
