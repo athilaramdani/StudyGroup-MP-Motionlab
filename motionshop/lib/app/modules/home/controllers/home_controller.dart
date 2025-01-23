@@ -3,83 +3,99 @@ import 'package:motionshop/app/data/models/product_model_api.dart';
 import 'package:motionshop/service/product_service.dart';
 
 class HomeController extends GetxController {
-  // Service
   final productService = ProductService();
 
-  // State reaktif
+  // Loading saat pertama kali buka page Home
   var isLoading = false.obs;
-  var productsFromApi = <ProductElement>[].obs; // List ProductElement
 
-  // Kategori (bisa dari API, atau hard-coded)
+  // Loading khusus untuk saat ganti kategori (grid saja)
+  var isGridLoading = false.obs;
+
+  var productsFromApi = <ProductElement>[].obs;
+
+  // Daftar kategori
   var chipLabels = <String>[].obs;
   var selectedIndex = 0.obs;
 
   @override
   void onInit() {
     super.onInit();
-    fetchProducts();
+    // Saat pertama kali buka page, kita set isLoading = true
+    fetchCategories();
+    fetchAllProducts();
   }
 
-  // Method panggil API
-  Future<void> fetchProducts() async {
+  // Ambil list kategori dari API
+  Future<void> fetchCategories() async {
     try {
-      isLoading.value = true;
-      // Memanggil service
-      final product =
-          await productService.getProducts(); // mengembalikan Product?
-      if (product != null) {
-        // Simpan semua productElement ke RxList
-        productsFromApi.value = product.products ?? [];
-
-        // Jika ingin men-generate chipLabels dari kategori (yang di-respons API):
-        final allCategories =
-            productsFromApi.map((p) => p.category?.name).toSet().toList();
-        // Contoh, tambahkan 'All' di paling depan
+      isLoading.value = true; // Loading penuh
+      final listCat = await productService.getCategories();
+      if (listCat != null) {
         chipLabels.clear();
         chipLabels.add('All');
-        chipLabels.addAll(allCategories.whereType<String>());
+        chipLabels.addAll(listCat);
       }
     } catch (e) {
-      // Handle error
       print(e);
     } finally {
-      isLoading.value = false;
+      isLoading.value = false; // selesai load kategori
     }
   }
 
-  // Mengubah kategori yang dipilih
+  // Ambil semua produk (untuk All)
+  // isInit = true jika panggilan pertama (akan pakai isLoading),
+  // isInit = false jika panggilan karena user ganti kategori ke 'All' (pakai isGridLoading)
+  Future<void> fetchAllProducts({bool isInit = true}) async {
+    try {
+      if (isInit) {
+        // loading penuh, misal panggilan pertama
+        isLoading.value = true;
+      } else {
+        // hanya grid yang loading
+        isGridLoading.value = true;
+      }
+      final product = await productService.getProducts();
+      if (product != null) {
+        productsFromApi.value = product.products ?? [];
+      }
+    } catch (e) {
+      print(e);
+    } finally {
+      if (isInit) {
+        isLoading.value = false;
+      } else {
+        isGridLoading.value = false;
+      }
+    }
+  }
+
+  // Ambil produk berdasarkan kategori (bukan 'All')
+  Future<void> fetchByCategory(String categoryName) async {
+    try {
+      // Saat ganti kategori, cukup grid yang loading
+      isGridLoading.value = true;
+
+      final product = await productService.getProductsByCategory(categoryName);
+      if (product != null) {
+        productsFromApi.value = product.products ?? [];
+      }
+    } catch (e) {
+      print(e);
+    } finally {
+      isGridLoading.value = false;
+    }
+  }
+
+  // Ganti kategori yang dipilih
   void setSelectedIndex(int index) {
     selectedIndex.value = index;
-  }
-
-  // Filter data berdasarkan kategori
-  List<ProductElement> get filteredProducts {
-    if (chipLabels.isEmpty) return [];
-
-    final category = chipLabels[selectedIndex.value];
+    final category = chipLabels[index];
     if (category == 'All') {
-      return productsFromApi;
+      // panggil fetchAllProducts dengan isInit = false
+      // (berarti cuma grid yang loading)
+      fetchAllProducts(isInit: false);
     } else {
-      // Karena di model enum Category, kita cek name-nya
-      return productsFromApi
-          .where(
-              (p) => p.category?.name.toLowerCase() == category.toLowerCase())
-          .toList();
-    }
-  }
-}
-
-extension CategoryExtension on Category {
-  String get name {
-    switch (this) {
-      case Category.BEAUTY:
-        return 'beauty';
-      case Category.FRAGRANCES:
-        return 'fragrances';
-      case Category.FURNITURE:
-        return 'furniture';
-      case Category.GROCERIES:
-        return 'groceries';
+      fetchByCategory(category);
     }
   }
 }

@@ -1,11 +1,6 @@
-// To parse this JSON data, do
-//
-//     final product = productFromJson(jsonString);
-
 import 'dart:convert';
 
 Product productFromJson(String str) => Product.fromJson(json.decode(str));
-
 String productToJson(Product data) => json.encode(data.toJson());
 
 class Product {
@@ -25,7 +20,7 @@ class Product {
         products: json["products"] == null
             ? []
             : List<ProductElement>.from(
-                json["products"]!.map((x) => ProductElement.fromJson(x))),
+                json["products"].map((x) => ProductElement.fromJson(x))),
         total: json["total"],
         skip: json["skip"],
         limit: json["limit"],
@@ -94,14 +89,14 @@ class ProductElement {
         id: json["id"],
         title: json["title"],
         description: json["description"],
-        category: categoryValues.map[json["category"]]!,
+        category: categoryValues.map[json["category"]],
         price: json["price"]?.toDouble(),
         discountPercentage: json["discountPercentage"]?.toDouble(),
         rating: json["rating"]?.toDouble(),
         stock: json["stock"],
         tags: json["tags"] == null
             ? []
-            : List<String>.from(json["tags"]!.map((x) => x)),
+            : List<String>.from(json["tags"].map((x) => x)),
         brand: json["brand"],
         sku: json["sku"],
         weight: json["weight"],
@@ -111,17 +106,16 @@ class ProductElement {
         warrantyInformation: json["warrantyInformation"],
         shippingInformation: json["shippingInformation"],
         availabilityStatus:
-            availabilityStatusValues.map[json["availabilityStatus"]]!,
+            availabilityStatusValues.map[json["availabilityStatus"]],
         reviews: json["reviews"] == null
             ? []
-            : List<Review>.from(
-                json["reviews"]!.map((x) => Review.fromJson(x))),
-        returnPolicy: returnPolicyValues.map[json["returnPolicy"]]!,
+            : List<Review>.from(json["reviews"].map((x) => Review.fromJson(x))),
+        returnPolicy: returnPolicyValues.map[json["returnPolicy"]],
         minimumOrderQuantity: json["minimumOrderQuantity"],
         meta: json["meta"] == null ? null : Meta.fromJson(json["meta"]),
         images: json["images"] == null
             ? []
-            : List<String>.from(json["images"]!.map((x) => x)),
+            : List<String>.from(json["images"].map((x) => x)),
         thumbnail: json["thumbnail"],
       );
 

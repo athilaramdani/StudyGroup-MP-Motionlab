@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProductCard extends StatelessWidget {
+  final int productId;
   final String title;
   final double price;
   final String image;
@@ -10,6 +11,7 @@ class ProductCard extends StatelessWidget {
 
   const ProductCard({
     super.key,
+    required this.productId,
     required this.title,
     required this.price,
     required this.image,
@@ -21,14 +23,11 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        // Kirim ID ke detail
         Get.toNamed(
           '/detail-product',
           arguments: {
-            'title': title,
-            'price': price,
-            'image': image,
-            'isFavorite': isFavorite,
-            'description': description ?? "tidak ada deskripsi",
+            'id': productId,
           },
         );
       },
@@ -47,6 +46,7 @@ class ProductCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Gambar
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(
@@ -54,12 +54,19 @@ class ProductCard extends StatelessWidget {
                 height: 165,
                 width: double.infinity,
                 fit: BoxFit.cover,
+                errorBuilder: (ctx, error, stack) => Container(
+                  height: 165,
+                  color: Colors.grey,
+                  child: const Center(child: Text("No Image")),
+                ),
               ),
             ),
             const SizedBox(height: 10),
             Text(
               title,
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
