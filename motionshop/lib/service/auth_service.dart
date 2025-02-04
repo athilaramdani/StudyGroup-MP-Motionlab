@@ -21,7 +21,7 @@ class AuthService {
       if (response.statusCode == 200) {
         final data = response.data;
         final prefs = await SharedPreferences.getInstance();
-        await prefs.setString('accessToken', data['token']);
+        await prefs.setString('accessToken', data['accessToken']);
         await prefs.setString('username', username);
         return data;
       } else {
