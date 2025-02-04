@@ -64,13 +64,18 @@ class RegisterView extends GetView<RegisterController> {
                 child: Icon(Icons.lock),
               ),
             ),
-            ConfirmationUserAccount(
+           ConfirmationUserAccount(
               buttonText: "Register",
               displayText: "Already have an account? ",
               onTap: () {
                 Get.back(); // atau Get.toNamed(AppRoutes.LOGIN);
               },
+              onLoginTap: () {
+                Get.toNamed('/login'); // Tambahkan ini
+              },
             ),
+
+
           ],
         ),
       ),

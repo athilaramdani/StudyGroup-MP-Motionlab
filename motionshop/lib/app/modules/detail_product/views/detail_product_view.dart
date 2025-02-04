@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:motionshop/app/data/models/product_model_api.dart';
-import 'package:motionshop/app/service/favorite_service.dart';
+import 'package:motionshop/service/favorite_service.dart';
 import 'package:motionshop/service/product_service.dart';
 
 class DetailProductController extends GetxController {
