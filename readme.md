@@ -1,110 +1,109 @@
-# **Study Group MP - Week 6**
+# **Study Group MP - Week 7**
 
 **Athila Ramdani Saputra**  
 **NIM: 103012300132**
 
-## [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Hello+temen+temen+!;Ini+Rangkuman+W6+Athdanz😎)](https://git.io/typing-svg)
+## [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Hello+temen+temen+!;Ini+Rangkuman+W7+Athdanz😎)](https://git.io/typing-svg)
 
-## Rangkuman Week 6: Working with API dan Future dalam Flutter
+## Rangkuman Week 7: Working with Local Storage in Flutter
 
-Di **Week 6** ini, kita mempelajari konsep penting dalam pengembangan aplikasi Flutter yaitu penggunaan API dan Future untuk menangani operasi asinkron.
+Di **Week 7** ini, kita mempelajari cara menyimpan data secara lokal di perangkat pengguna bersama kak darrel dan kak raihan, menggunakan berbagai metode penyimpanan lokal seperti **Local Storage**, **Session Storage**, dan **Cookies**. Selain itu, kita juga membahas beberapa teknologi penyimpanan lokal yang populer di Flutter, seperti **Hive**, **SQLite**, dan **SharedPreferences**.
 
-### **1. Future dalam Dart**
+---
 
-Future adalah konsep fundamental dalam Dart untuk menangani operasi asinkron. Ini merepresentasikan nilai atau error yang akan tersedia di masa depan.
+### **1. Perbedaan Cookies, Session Storage, dan Local Storage**
 
-#### Karakteristik Future:
-- Menangani operasi yang membutuhkan waktu
-- Berjalan secara asinkron (tidak blocking)
-- Ideal untuk operasi I/O seperti:
-  - Mengambil data dari internet
-  - Mengakses storage device
-  - Membaca file dari galeri
+#### **Cookies**
+- **Akses**: Bisa diakses oleh server dan client.
+- **Penggunaan**: Sering digunakan untuk menyimpan informasi kecil seperti session ID atau preferensi pengguna.
+- **Masa Hidup**: Dapat diatur untuk bertahan dalam waktu tertentu atau hingga pengguna menghapusnya.
 
-### **2. Bekerja dengan API**
+#### **Session Storage**
+- **Akses**: Hanya bisa diakses oleh client.
+- **Penggunaan**: Data disimpan sementara selama sesi browser (tab) terbuka.
+- **Masa Hidup**: Data terhapus saat tab atau browser ditutup.
 
-API (Application Programming Interface) memungkinkan komunikasi antara client (aplikasi Flutter) dan server.
+#### **Local Storage**
+- **Akses**: Hanya bisa diakses oleh client.
+- **Penggunaan**: Data disimpan secara permanen di perangkat pengguna.
+- **Masa Hidup**: Data tetap ada meskipun aplikasi atau browser ditutup, kecuali dihapus secara manual oleh pengguna.
 
-#### Komponen Penting:
-- **Client**: Aplikasi Flutter yang kita buat
-- **Server**: Endpoint API (contoh: https://dummyjson.com)
-- **Format Data**: Umumnya menggunakan JSON
+---
 
-#### Tools yang Digunakan:
-1. **Dio Package**
-   - Lebih direkomendasikan dibanding http package
-   - Memiliki fitur interceptor
-   - Sintaks yang lebih sederhana
+### **2. Local Storage dalam Flutter**
 
-2. **Alat Bantu Development**
-   - Postman: Testing API endpoint
-   - JSONCrack: Visualisasi struktur JSON
-   - QuickType: Konversi JSON ke model Dart
+Local Storage adalah cara untuk menyimpan data secara permanen di perangkat pengguna. Ini berguna untuk aplikasi yang tidak memerlukan koneksi internet permanen atau yang melakukan semua operasi pada perangkat itu sendiri.
 
-### **3. Model dan JSON Parsing**
+#### **Kegunaan Local Storage**
+- Menyimpan pengaturan aplikasi.
+- Menyimpan data pengguna.
+- Menyimpan data yang perlu dipertahankan meskipun aplikasi ditutup.
 
-Untuk menggunakan data JSON dalam aplikasi Flutter, kita perlu mengkonversinya ke bentuk model Dart.
+---
 
-#### Langkah-langkah:
-1. Mendapatkan response JSON dari API
-2. Menggunakan QuickType untuk generate model Dart
-3. Implementasi model dalam aplikasi
+### **3. Teknologi Penyimpanan Lokal di Flutter**
 
-```dart
-// Contoh model sederhana
-class Product {
-  final int id;
-  final String title;
-  final double price;
+#### **Hive**
+- **Deskripsi**: Hive adalah database yang cepat dan ringan untuk Flutter yang tidak memerlukan server atau koneksi internet.
+- **Kelebihan**:
+  - Cepat dan ringan.
+  - Mendukung penyimpanan data dalam bentuk objek Dart secara langsung.
+  - Tidak memerlukan setup database yang rumit.
+- **Konsep Box**:
+  - Box adalah tempat untuk menyimpan data dalam bentuk key-value.
+  - Setiap Box memiliki nama unik dan data di dalamnya disimpan secara asinkron.
 
-  Product({
-    required this.id,
-    required this.title,
-    required this.price,
-  });
+#### **SQLite**
+- **Deskripsi**: SQLite adalah relational database yang digunakan untuk menyimpan data dalam bentuk tabel.
+- **Kelebihan**:
+  - Cocok untuk aplikasi dengan struktur data yang kompleks.
+  - Mendukung operasi SQL untuk query yang lebih fleksibel.
+  - Ideal untuk data yang terstruktur seperti data produk atau transaksi.
+- **Penggunaan**: Memerlukan lebih banyak pengaturan dibandingkan Hive, tetapi memberikan fleksibilitas yang lebih besar.
 
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
-      id: json['id'],
-      title: json['title'],
-      price: json['price'].toDouble(),
-    );
-  }
-}
-```
+#### **SharedPreferences**
+- **Deskripsi**: SharedPreferences adalah cara sederhana untuk menyimpan data kecil dalam bentuk key-value.
+- **Kelebihan**:
+  - Mudah digunakan.
+  - Ideal untuk menyimpan data kecil seperti pengaturan aplikasi atau status login pengguna.
+- **Keterbatasan**: Tidak cocok untuk menyimpan data besar atau kompleks.
 
-### **4. Arsitektur API dalam Flutter**
+---
 
-Implementasi API mengikuti alur yang terstruktur:
+### **4. Perbandingan Hive, SQLite, dan SharedPreferences**
 
-```
-REMOTE → SERVICE → CONTROLLER → UI
-```
+| Fitur               | Hive                          | SQLite                       | SharedPreferences          |
+|---------------------|-------------------------------|------------------------------|----------------------------|
+| **Tipe Data**       | Key-Value, Objek Dart         | Tabel (Relational)           | Key-Value                  |
+| **Kompleksitas**    | Sederhana                     | Sedang                       | Sangat Sederhana           |
+| **Penggunaan**      | Data kecil hingga sedang      | Data terstruktur & kompleks  | Data kecil (pengaturan)    |
+| **Kecepatan**       | Cepat                         | Sedang                       | Cepat                      |
+| **Setup**           | Mudah                         | Lebih rumit                  | Sangat Mudah               |
 
-#### Penjelasan Alur:
-- **REMOTE**: Layer untuk komunikasi langsung dengan API
-- **SERVICE**: Layer untuk mengolah data dari remote
-- **CONTROLLER**: Layer untuk logika bisnis
-- **UI**: Layer untuk menampilkan data ke user
+---
 
-### **5. Best Practices**
+### **5. Best Practices dalam Penggunaan Local Storage**
 
-1. **Error Handling**
-   - Selalu implementasi try-catch
-   - Berikan feedback yang jelas ke user
+1. **Pilih Teknologi yang Tepat**:
+   - Gunakan **SharedPreferences** untuk data kecil seperti pengaturan.
+   - Gunakan **Hive** untuk data yang lebih kompleks tetapi tidak memerlukan struktur tabel.
+   - Gunakan **SQLite** untuk data terstruktur dan relasional.
 
-2. **Loading State**
-   - Tampilkan indikator loading saat fetch data
-   - Gunakan FutureBuilder atau GetX untuk state management
+2. **Enkripsi Data Sensitif**:
+   - Selalu enkripsi data sensitif seperti informasi login atau data pribadi pengguna.
 
-3. **Data Caching**
-   - Pertimbangkan untuk menyimpan data sementara
-   - Kurangi beban server dan improve UX
+3. **Manajemen Storage**:
+   - Bersihkan data yang tidak diperlukan secara berkala untuk menghemat ruang penyimpanan.
+
+4. **Error Handling**:
+   - Selalu tangani error yang mungkin terjadi saat membaca atau menulis data lokal.
+
+---
 
 ### **Penutup**
-Dengan pemahaman tentang Future dan API, kita dapat membuat aplikasi Flutter yang dapat berkomunikasi dengan server dan menangani operasi asinkron dengan baik! 🚀
+Dengan memahami berbagai metode penyimpanan lokal seperti Hive, SQLite, dan SharedPreferences, kita dapat memilih solusi terbaik sesuai kebutuhan aplikasi. Local Storage memungkinkan aplikasi kita berfungsi dengan baik bahkan dalam mode offline, meningkatkan pengalaman pengguna secara signifikan. 🚀
 
 ### **Resources Tambahan**
-- [Dokumentasi Dio](https://pub.dev/packages/dio)
-- [DummyJSON API](https://dummyjson.com/docs)
-- [QuickType](https://quicktype.io/)
+- [Dokumentasi Hive](https://docs.hivedb.dev/)
+- [Dokumentasi SQLite](https://pub.dev/packages/sqflite)
+- [Dokumentasi SharedPreferences](https://pub.dev/packages/shared_preferences)
