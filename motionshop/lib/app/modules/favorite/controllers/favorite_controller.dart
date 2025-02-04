@@ -1,23 +1,26 @@
 import 'package:get/get.dart';
+import 'package:motionshop/service/favorite_service.dart';
 
 class FavoriteController extends GetxController {
-  //TODO: Implement FavoriteController
+  final FavoriteService favoriteService = FavoriteService();
+  var favoriteProducts = <int>[].obs;
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    loadFavorites();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  Future<void> loadFavorites() async {
+    favoriteProducts.value = await favoriteService.getFavorites();
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  Future<void> toggleFavorite(int productId) async {
+    await favoriteService.toggleFavorite(productId);
+    loadFavorites();
   }
 
-  void increment() => count.value++;
+  bool isFavorite(int productId) {
+    return favoriteProducts.contains(productId);
+  }
 }

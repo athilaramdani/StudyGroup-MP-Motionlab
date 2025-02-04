@@ -41,17 +41,18 @@ class DetailProductView extends GetView<DetailProductController> {
                         fontFamily: 'Inter',
                       ),
                     ),
-                    IconButton(
-                      icon: Icon(
-                        controller.isFavorite.value
-                            ? Icons.favorite
-                            : Icons.favorite_border,
-                        color: controller.isFavorite.value
-                            ? Colors.red
-                            : Colors.grey,
-                      ),
-                      onPressed: () => controller.toggleFavorite(product.id!),
-                    ),
+                    Obx(() => IconButton(
+                          icon: Icon(
+                            controller.isFavorite.value
+                                ? Icons.favorite
+                                : Icons.favorite_border,
+                            color: controller.isFavorite.value
+                                ? Colors.red
+                                : Colors.grey,
+                          ),
+                          onPressed: () =>
+                              controller.toggleFavorite(product.id!),
+                        )),
                   ],
                 ),
               ),
