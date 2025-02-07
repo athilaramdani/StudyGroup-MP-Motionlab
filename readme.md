@@ -1,61 +1,109 @@
-# **Study Group MP - Week 1**  
+# **Study Group MP - Week 8**
+
 **Athila Ramdani Saputra**  
-**NIM: 103012300132**  
+**NIM: 103012300132**
+
+## [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Hello+temen+temen+!;Ini+Rangkuman+W8+Athdanz😎)](https://git.io/typing-svg)
+
+## Rangkuman Week 8: Introduction to Firebase in Flutter
+
+Di **Week 8** ini, kita mempelajari pengenalan Firebase dalam pengembangan aplikasi Flutter bersama kak Indra Mahesa dan kak Raihan. Firebase adalah platform pengembangan aplikasi dari Google yang menyediakan berbagai layanan seperti penyimpanan data, autentikasi, analisis, dan lainnya. Kita juga membahas Firestore, salah satu layanan database dari Firebase, serta konsep Stream dan StreamBuilder dalam Flutter.
 
 ---
-## Rangkuman Week 1: Version Control Git
-Pada pertemuan pertama Study Group dengan pemateri mas Zayid dan juga pada aslab serta rekan2 intern, kita membahas dasar-dasar Version Control menggunakan Git diantaranya :
-1. **Membuat Akun Git**
-- Para intern yang masih belum membuat akun github diajarkan bagaimana cara membuat akun github dengan cara mendaftarkan email dan membuat password
-2. **Membuat Repository**
-- selanjutnya diberikan cara cara untuk pembuatan repo yaitu
-### Membuat Repository Melalui Website GitHub
-Buka GitHub -> Klik tombol "+" di kanan atas -> Pilih "New repository" -> Isi nama repository dan pengaturan lainnya -> Klik "Create repository"
-### Membuat Repository Lokal dan Menghubungkannya ke GitHub
-Buka Terminal/GitBash (sesuaikan dengan folder), lalu lakukan command ini
-| **Perintah**                      | **Fungsi**                                                                                                   |
-|------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| `git init`                         | Menginisialisasi repository Git lokal di folder yang dipilih.                                               |
-| `git add .`                        | Menambahkan semua file yang ada di folder ke staging area.                                                  |
-| `git commit -m "komentarnya"`      | Menyimpan perubahan yang ada di staging area ke repository lokal dengan pesan commit.                       |
-| `git branch -M main`               | Mengubah nama branch default menjadi `main`.                                                                |
-| `git remote add origin <url>`      | Menghubungkan repository lokal ke repository GitHub melalui URL (HTTPS/SSH).                                |
-| `git push origin main`             | Mengunggah commit dari branch `main` lokal ke repository `main` di GitHub.                                  |
 
-### **Up Repo Memakai SSH**
+### **1. Pengenalan Firebase**
 
-Alur dalam up repo memakai SSH adalah sebagai berikut:  
+#### **Firebase**
+- **Deskripsi**: Firebase adalah platform pengembangan aplikasi dari Google.
+- **Fitur**: Menyediakan berbagai layanan seperti penyimpanan data, autentikasi, analisis, dan lainnya.
+- **Kegunaan**: Cocok digunakan dalam pengembangan aplikasi Flutter untuk mengintegrasikan fitur-fitur backend dengan cepat dan efisien.
 
-| **Langkah**                          | **Perintah/Proses**                                                                                                     |
-|--------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| Membuat SSH Key                      | Jalankan perintah: `ssh-keygen -t ed25519 -C "emailsaya@gmail.com"`, lalu kita disuruh mengenter File untuk menyimpan key nya, enter saja lalu enter lagi 2 kali untuk skip passphrase sampai akan muncul lokasi penyimpanan identification, public key, tampilan key fingerprint dan keys random art                                                     |
-| Menyalin SSH Key                     | Gunakan perintah: `clip < ~/.ssh/id_ed25519.pub`.                                                                      |
-| Menambahkan Key ke GitHub            | Masukkan key yang telah disalin ke **Profile > Settings > SSH and GPG Keys > New SSH Key**.                             |
-| Mengisi Title dan Key                | Beri judul pada key dan paste key yang disalin dari langkah sebelumnya.                                                 |
-| Gunakan Alur di poin membuat repository lokal | ikuti alur nya dan setelah di push muncul gambar seperti di bawah tabel. |
-| Fungsi SSH                           | Berguna untuk menghubungkan GitHub dengan komputer lokal secara aman.  |
+#### **Firestore**
+- **Deskripsi**: Firestore adalah salah satu layanan cloud database dari Firebase.
+- **Fitur**:
+  - Menyimpan dan mengelola data aplikasi secara mudah.
+  - Perubahan data dilakukan secara realtime yang disinkronkan secara otomatis di semua perangkat yang terhubung.
+  - Mendukung pengembangan aplikasi berbagai platform.
 
-Berikut adalah contoh gambar ilustrasi:  
-![Contoh SSH Key](sshexample.png)
+---
 
-### **Daftar Syntax Git yang mungki terpakai**
+### **2. Firestore Fundamentals**
 
-| **Perintah**                      | **Fungsi**                                                                                                   |
-|------------------------------------|-------------------------------------------------------------------------------------------------------------|
-| `git checkout [branch-name]`       | Berpindah ke branch lain yang sudah ada.                                                                   |
-| `git branch`                       | Menampilkan daftar branch yang tersedia pada repository lokal.                                             |
-| `git branch [branch-name]`         | Membuat branch baru dengan nama yang ditentukan.                                                           |
-| `git status`                       | Menampilkan status repository lokal, termasuk file yang belum di-tracked, di-staged, atau siap di-commit.  |
-| `git log`                          | Menampilkan riwayat commit pada branch saat ini.                                                           |
-| `git stash`                        | Menyimpan perubahan yang belum di-commit ke dalam penyimpanan sementara (stash) tanpa mengubah file kerja. |
-| `git stash apply`                  | Mengambil kembali perubahan yang disimpan di stash ke dalam workspace.                                     |
-| `git push origin [branch-name]`    | Mengunggah commit dari branch tertentu ke repository di GitHub.                                            |
-| `git pull`                         | Mengambil perubahan terbaru dari repository remote dan menggabungkannya dengan branch lokal.               |
-| `git fetch`                        | Mengambil data terbaru dari repository remote tanpa menggabungkan ke branch lokal.                         |
-| `git merge [branch-name]`          | Menggabungkan branch tertentu ke branch yang sedang aktif.                                                 |
-| `git rebase [branch-name]`         | Memindahkan basis branch aktif ke branch lain untuk riwayat commit yang lebih bersih.                      |
-| `git reset [file-name]`            | Membatalkan staging file tertentu.                                                                         |
-| `git reset --hard [commit-id]`                 | Membatalkan semua perubahan pada branch lokal, termasuk perubahan yang belum di-commit.                    |
-| `git revert [commit-id]`           | Membuat commit baru yang membatalkan perubahan dari commit tertentu.                                       |
-| `git clone [url]`                  | Menggandakan repository remote ke dalam folder lokal.                                                      |
+#### **Collection**
+- **Deskripsi**: Collection adalah sekumpulan document dalam Firestore.
+- **Kegunaan**: Mirip dengan tabel dalam database relasional, Collection memungkinkan Anda untuk menyimpan dan mengelola sekelompok data terkait dalam aplikasi Anda.
 
+#### **Document**
+- **Deskripsi**: Document adalah tempat di mana Anda menyimpan data di dalam Firestore.
+- **Fitur**:
+  - Setiap document memiliki kumpulan data yang berisi informasi.
+  - Setiap document memiliki ID yang unik untuk membedakan satu dengan yang lainnya.
+
+#### **Tipe Data yang Didukung Firestore**
+- String, Boolean, Timestamp, Number, Map, Array, Null, Geopoint, Reference.
+
+---
+
+### **3. Perbedaan Stream dan API**
+
+#### **API**
+- **Deskripsi**: API (Application Programming Interface) adalah sekumpulan protokol dan alat untuk membangun aplikasi perangkat lunak.
+- **Kegunaan**: Digunakan untuk berkomunikasi antara aplikasi dan server.
+
+#### **Stream**
+- **Deskripsi**: Stream adalah asynchronous function yang dikirimkan secara berurutan berdasarkan event yang diberikan.
+- **Kegunaan**: Berbeda dengan Future yang hanya mengembalikan satu data saja, Stream akan selalu mengembalikan data sampai tidak ada lagi data yang melewati aliran tersebut.
+
+#### **Snapshot**
+- **Deskripsi**: Data yang dialirkan dari pengguna A ke pengguna B disebut snapshot.
+- **Fitur**:
+  - **ConnectionState**: Status snapshot (waiting, active, none).
+  - **Data**: Data yang diterima dari stream.
+
+---
+
+### **4. Mengenal Stream dan StreamBuilder**
+
+#### **Stream**
+- **Deskripsi**: Asynchronous function yang dikirimkan secara berurutan berdasarkan event yang diberikan.
+- **Kegunaan**: Seperti aliran air, Stream akan selalu mengembalikan data sampai tidak ada lagi data yang melewati aliran tersebut.
+
+#### **StreamBuilder (Widget)**
+- **Deskripsi**: Widget yang digunakan untuk membangun UI berdasarkan data dari Stream.
+- **Contoh Kode**:
+    ```dart
+  StreamBuilder(
+    stream: getDataStream(),
+    builder: (context, snapshot) {
+      return Container();
+    },
+  ),
+    ```
+### **5. Hands-On: Integrating Firebase Firestore to Your Flutter**
+
+#### **Langkah-langkah Integrasi Firebase Firestore ke Flutter**
+
+1. **Create Firebase Project**:
+   - Buat proyek Firebase baru di Firebase Console.
+
+2. **Create Firestore Database Service**:
+   - Buat database Firestore di Firebase Console.
+
+3. **Integrate Firebase to Your Flutter**:
+   - **Install Firebase CLI**: Instal Firebase CLI di mesin.
+   - **Install FlutterFire CLI**: Instal FlutterFire CLI untuk mengintegrasikan Firebase dengan Flutter.
+   - **Add Firebase Core to Your Flutter Application**: Tambahkan package `firebase_core` ke proyek Flutter.
+
+4. **Add Firestore Service to Your Flutter Application**:
+   - Tambahkan package `cloud_firestore` ke proyek Flutter.
+   - Konfigurasikan Firestore di aplikasi Flutter.
+
+---
+
+### **Penutup**
+Dengan memahami Firebase dan Firestore, kita dapat mengintegrasikan fitur-fitur backend dengan cepat dan efisien dalam aplikasi Flutter. Firebase menyediakan berbagai layanan yang memudahkan pengembangan aplikasi, terutama dalam hal penyimpanan data dan sinkronisasi realtime. 🚀
+
+### **Resources Tambahan**
+- [Dokumentasi Firebase](https://firebase.google.com/docs)
+- [Dokumentasi Firestore](https://firebase.google.com/docs/firestore)
+- [Dokumentasi StreamBuilder](https://api.flutter.dev/flutter/widgets/StreamBuilder-class.html)
